@@ -1,36 +1,30 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 function Navbar({ currentPage, handlePageChange }){
     return (
         <div className='nav'>
             <nav className='navbar'>
                 <li>
-                    <a href="#Home" 
-                        onClick={() => handlePageChange('Home')} 
-                        className={currentPage ==='Home'}>
+                    <Link to= "/Home">                
                         Home
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#Profile" 
-                        onClick={() => handlePageChange('Profile')}
-                        className={currentPage ==='Profile'}>
+                    <Link to= '/Profile'> 
                         Profile
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#Signup" 
-                        onClick={() => handlePageChange('Signup')}
-                        className={currentPage ==='Signup'}>
+                    <Link to= '/Signup'> 
                         Sign up
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#Login" 
-                        onClick={() => handlePageChange('Login')}
-                        className={currentPage ==='Login'}>
+                    <Link to= '/Login'> 
                         Log In
-                    </a>
+                    </Link>
                 </li>
             </nav>
         </div>

@@ -1,19 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/mutations';
 
-function Login () {
-return(
+
+import Auth from '../utils/auth';
+
+export default function Login() {
+  const [formState, setFormState] = useState({ username: '', password: '' });
+  const [login, { error, data }] = useMutation(LOGIN_USER);
+
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setFormState({
+      username: '',
+      password: '',
+    });
+  };
+
+return (
     <div>
         <form onSubmit={handleFormSubmit}>
           <input
-            className="form-input"
+            className="inputUsername"
             placeholder="Your username"
             name="name"
             type="text"
-            value={formState.name}
+            value={formState.username}
             onChange={handleChange}
           />
             <input
-            className="form-input"
+            className="inputEmail"
             placeholder="******"
             name="password"
             type="password"
@@ -21,7 +60,7 @@ return(
             onChange={handleChange}
           />
           <button
-            className="btn btn-block btn-info"
+            className="submit"
             style={{ cursor: 'pointer' }}
             type="submit"
           >
@@ -31,5 +70,3 @@ return(
     </div>
 )
 }
-
-export default Login
