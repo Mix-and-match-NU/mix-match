@@ -1,41 +1,49 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
-function Navbar({ currentPage, handlePageChange }){
+const Navbar = () => {
     return (
-        <div className='nav'>
-            <nav className='navbar'>
-                <li>
-                    <a href="#Home" 
-                        onClick={() => handlePageChange('Home')} 
-                        className={currentPage ==='Home'}>
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="#Profile" 
-                        onClick={() => handlePageChange('Profile')}
-                        className={currentPage ==='Profile'}>
-                        Profile
-                    </a>
-                </li>
-                <li>
-                    <a href="#Signup" 
-                        onClick={() => handlePageChange('Signup')}
-                        className={currentPage ==='Signup'}>
-                        Sign up
-                    </a>
-                </li>
-                <li>
-                    <a href="#Login" 
-                        onClick={() => handlePageChange('Login')}
-                        className={currentPage ==='Login'}>
-                        Log In
-                    </a>
-                </li>
+        <div>
+            <nav>
+                <Link to='/Login'>                
+                    Login
+                </Link>
+
+                <Link to='/Signup'>
+                    Sign Up
+                </Link>
             </nav>
         </div>
+        // <div className='nav'>
+        //     <nav className='navbar'>
+        //         <ul>
+        //         <li>
+        //             <Link to= "/Home">                
+        //                 Home
+        //             </Link>
+        //         </li>
+        //         <li>
+        //             <Link to= '/Profile'> 
+        //                 Profile
+        //             </Link>
+        //         </li>
+        //         <li>
+        //             <Link to= '/Signup'> 
+        //                 Sign up
+        //             </Link>
+        //         </li>
+        //         <li>
+        //             <Link to= '/Login'> 
+        //                 Log In
+        //             </Link>
+        //         </li>
+        //         </ul>
+
+        //     </nav>
+        // </div>
     )
     
 }
 
-export default Navbar
+export default Navbar;
+ 

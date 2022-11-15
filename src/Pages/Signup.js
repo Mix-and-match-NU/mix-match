@@ -1,6 +1,45 @@
-import React from 'react';
 
-function Signup () {
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { SIGNUP_USER } from '../utils/mutations';
+
+import Auth from '../utils/auth';
+
+const Signup = (props) => {
+  const [formState, setFormState] = useState({ email: '', username: '', password: '' });
+  const [signup, { error, data }] = useMutation(SIGNUP_USER);
+
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+    try {
+      const { data } = await signup({
+        variables: { ...formState },
+      });
+
+      Auth.signup(data.signup.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setFormState({
+      email: '',
+      username: '',
+      password: '',
+    });
+
 return(
     <div>
         <form onSubmit={handleFormSubmit}>
@@ -38,6 +77,6 @@ return(
         </form>
     </div>
 )
-}
+}}
 
 export default Signup
