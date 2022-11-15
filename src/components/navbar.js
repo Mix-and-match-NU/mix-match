@@ -1,35 +1,49 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
-
-function Navbar({ currentPage, handlePageChange }){
+const Navbar = () => {
     return (
-        <div className='nav'>
-            <nav className='navbar'>
-                <li>
-                    <Link to= "/Home">                
-                        Home
-                    </Link>
-                </li>
-                <li>
-                    <Link to= '/Profile'> 
-                        Profile
-                    </Link>
-                </li>
-                <li>
-                    <Link to= '/Signup'> 
-                        Sign up
-                    </Link>
-                </li>
-                <li>
-                    <Link to= '/Login'> 
-                        Log In
-                    </Link>
-                </li>
+        <div>
+            <nav>
+                <Link to='/Login'>                
+                    Login
+                </Link>
+
+                <Link to='/Signup'>
+                    Sign Up
+                </Link>
             </nav>
         </div>
+        // <div className='nav'>
+        //     <nav className='navbar'>
+        //         <ul>
+        //         <li>
+        //             <Link to= "/Home">                
+        //                 Home
+        //             </Link>
+        //         </li>
+        //         <li>
+        //             <Link to= '/Profile'> 
+        //                 Profile
+        //             </Link>
+        //         </li>
+        //         <li>
+        //             <Link to= '/Signup'> 
+        //                 Sign up
+        //             </Link>
+        //         </li>
+        //         <li>
+        //             <Link to= '/Login'> 
+        //                 Log In
+        //             </Link>
+        //         </li>
+        //         </ul>
+
+        //     </nav>
+        // </div>
     )
     
 }
 
-export default Navbar
+export default Navbar;
+ 

@@ -5,42 +5,47 @@ import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
-export default function Login() {
+export default function Login(props) {
   const [formState, setFormState] = useState({ username: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
-  // update state based on form input changes
+  // // update state based on form input changes
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    // const { name, value } = event.target;
 
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
+    // setFormState({
+    //   ...formState,
+    //   [name]: value,
+    // });
+    console.log('fuck this')
   };
 
-  // submit form
+  // // submit form
   const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    console.log(formState);
-    try {
-      const { data } = await login({
-        variables: { ...formState },
-      });
+    // event.preventDefault();
+    // console.log(formState);
+    // try {
+    //   const { data } = await login({
+    //     variables: { ...formState },
+    //   });
 
-      Auth.login(data.login.token);
-    } catch (e) {
-      console.error(e);
-    }
+    //   // Auth.login(data.login.token);
+    // } catch (e) {
+    //   console.error(e);
+    // }
 
     // clear form values
-    setFormState({
-      username: '',
-      password: '',
-    });
+    // setFormState({
+    //   username: '',
+    //   password: '',
+    // });
+    console.log('fuck you')
   };
 
 return (
+  // <div>
+  //   hello
+  // </div>
     <div>
         <form onSubmit={handleFormSubmit}>
           <input
@@ -68,5 +73,6 @@ return (
           </button>
         </form>
     </div>
+// 
 )
 }
