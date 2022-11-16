@@ -6,7 +6,7 @@ import {
   ApolloProvider,
   createHttpLink,
 } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+// import { setContext } from '@apollo/client/link/context';
 
 import { BrowserRouter, Routes, Route, Router } from 'react-router-dom';
 
