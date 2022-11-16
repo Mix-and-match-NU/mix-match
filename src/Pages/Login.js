@@ -9,37 +9,39 @@ export default function Login(props) {
   const [formState, setFormState] = useState({ username: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
-  // // update state based on form input changes
+  // update state based on form input changes
   const handleChange = (event) => {
-    // const { name, value } = event.target;
+    event.preventDefault();
+    const { name, value } = event.target;
 
-    // setFormState({
-    //   ...formState,
-    //   [name]: value,
-    // });
-    console.log('fuck this')
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+    console.log(event.target.value, "LOGGING")
+    console.log('LOGIN HANDLE CHANGE', value)
   };
 
-  // // submit form
+  // submit form
   const handleFormSubmit = async (event) => {
-    // event.preventDefault();
-    // console.log(formState);
-    // try {
-    //   const { data } = await login({
-    //     variables: { ...formState },
-    //   });
+    event.preventDefault();
+    console.log(formState);
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
 
-    //   // Auth.login(data.login.token);
-    // } catch (e) {
-    //   console.error(e);
-    // }
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
 
     // clear form values
-    // setFormState({
-    //   username: '',
-    //   password: '',
-    // });
-    console.log('fuck you')
+    setFormState({
+      username: '',
+      password: '',
+    });
+    console.log('LOGIN FORM SUBMIT', data)
   };
 
 return (
@@ -51,7 +53,7 @@ return (
           <input
             className="inputUsername"
             placeholder="Your username"
-            name="name"
+            name="username"
             type="text"
             value={formState.username}
             onChange={handleChange}
