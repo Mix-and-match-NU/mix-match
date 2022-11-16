@@ -18,7 +18,7 @@ class AuthService {
   
     login(idToken) {
       localStorage.setItem('id_token', idToken);
-      window.location.assign('/'); // takes the user to the '/' route after the idToken
+      // window.location.assign('/'); // takes the user to the '/' route after the idToken
     }
   
     logout() {
