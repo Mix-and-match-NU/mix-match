@@ -45,7 +45,7 @@ export const ADD_SONG = gql`
     mutation addSong($userId: String!, $songId: String!, $title: String, $artist: String!, $album: String!, year: String!) {
         addSong(userId: $userId, songId: $songId) {
             _id
-            playlist{git 
+            playlist{
                 _id
                 title
                 artist
