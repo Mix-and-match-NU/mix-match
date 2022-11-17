@@ -15,6 +15,8 @@ import Login from './Pages/Login';
 import Footer from './components/footer';
 import Navbar from './components/navbar';
 import Profile from './Pages/Profile';
+import QuestionList from './Pages/QuestionList';
+import { questionData } from './data/questionData';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -59,7 +61,9 @@ function App() {
                <Route 
                  path="/Profile" 
                  element={<Profile />}/>
-
+               <Route 
+                 path="/QuestionList" 
+                 element={<QuestionList data={questionData} />}/>
               </Routes>
              
         </div>
