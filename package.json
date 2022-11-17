@@ -2,8 +2,9 @@
   "name": "mix-match",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
-    "@apollo/client": "^3.7.1",
+    "@apollo/client": "^3.5.8",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.10.14",
