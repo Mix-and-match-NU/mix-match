@@ -22,6 +22,11 @@ export const QUERY_SINGLE_USER = gql`
             _id
             username
             password
+            avatar {
+              large
+              medium 
+              thumbnail
+            }
         }
     }
 `;
