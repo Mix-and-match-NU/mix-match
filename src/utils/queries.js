@@ -44,7 +44,7 @@ export const QUERY_SONGS = gql`
 `;
 
 export const QUERY_SINGLE_SONG = gql`
-    query getSingleSon($songId: ID!) {
+    query getSingleSong($songId: ID!) {
         song (songId: $songId){
             title
             artist
@@ -53,4 +53,19 @@ export const QUERY_SINGLE_SONG = gql`
             genre
         }
     }
+`;
+
+export const QUERY_ME = gql`
+  query me {
+    me {
+    _id
+    username
+    password
+    avatar {
+        large
+        medium 
+        thumbnail
+        }
+    }
+  }
 `;

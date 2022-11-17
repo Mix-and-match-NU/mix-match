@@ -1,6 +1,6 @@
 // React
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 // Material UI
@@ -12,18 +12,29 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 
+import Auth from '../utils/auth';
+
 // Importing data from queries, which is calling from backend
-import { QUERY_SINGLE_USER } from "../utils/queries";
+import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 
 export default function Profile() {
-  const userId = "637598e5f34f05402ca7441d";
+  const { userId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_SINGLE_USER, {
+  const { loading, data } = useQuery(
+    userId ? QUERY_SINGLE_USER : QUERY_ME, {
     variables: { userId: userId },
   });
-console.log("USER LOG", userId)
 
-  const user = data?.user || {};
+  console.log(userId ? 'query_single' : 'QUERY_ME')
+  console.log('data',data)
+  console.log('userId')
+
+  const user = data?.me || data?.user || {};
+
+  if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
+    console.log('going to your profile')
+    return <Navigate to="/me" />;
+  }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -44,7 +55,7 @@ console.log("USER LOG", userId)
 
       {/* Username */}
       <div>
-        Welcome, {user}!
+        Welcome, user!
       </div>
 
       {/* Card */}
