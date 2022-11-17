@@ -16,6 +16,9 @@ const Navbar = () => {
                 <Link to='/Profile'>
                     Profile
                 </Link>
+                <Link to='/QuestionList'>
+                    Question List
+                </Link>
             </nav>
         </div>
         // <div className='nav'>
