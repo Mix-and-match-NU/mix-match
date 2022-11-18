@@ -21,7 +21,6 @@ export const QUERY_SINGLE_USER = gql`
         user(userId: $userId) {
             _id
             username
-            password
             avatar {
               large
               medium 
@@ -60,7 +59,6 @@ export const QUERY_ME = gql`
     me {
     _id
     username
-    password
     avatar {
         large
         medium 
