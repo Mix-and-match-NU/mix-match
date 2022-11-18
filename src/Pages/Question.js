@@ -1,17 +1,15 @@
-function Question () {
+import { questionData } from "../data/questionData";
+
+function Question({ question, list }) {
   // // const { treat } = props
-  // const message = isFavorite ? <p>Favorite Added</p> : null
-  // const buttonText = isFavorite ? <p>Remove Favorite</p> : <p>Add Favorite</p>
-
-    return (
+console.log(question, "question test in question.js")
+  return (
     <>
-
-      <div>
-          QUESTION CONNECTION TEST
+      <div key={question.id}>
+        <h5>{question.text}</h5>
       </div>
-      
-      </>
-  )
+    </>
+  );
 }
 
-export default Question
+export default Question;

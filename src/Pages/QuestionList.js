@@ -3,10 +3,10 @@ import Question from "./Question";
 import { questionData } from "../data/questionData";
 
 function QuestionList() {
-  const [question, setQuestion] = useState([]);
 
-  const list = question.map((questions) => {
-    console.log("Yummy treats!", questions);
+
+  const list = questionData.map((questions) => {
+    console.log("QUESTION LIST", questions);
 
     return (
       <Question
@@ -18,7 +18,7 @@ function QuestionList() {
 
   return (
     <>
-      <div className="container">{list}</div>
+      <div>{list}</div>
     </>
   );
 }
