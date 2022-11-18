@@ -32,7 +32,10 @@ export default function Profile() {
   }
   // console.log('userId')
 
+
   const user = data?.me || data?.user || {};
+  // console.log('new user data',user)
+  const avatar = user?.avatar || {}
 
   if (loading) {
     return <div>Loading...</div>;
@@ -50,7 +53,7 @@ export default function Profile() {
         <Stack direction="row" spacing={2}>
           <Avatar
             alt="user"
-            src={user.avatar[0].thumbnail}
+            src={avatar.length === 0 ? '' : avatar[0].thumbnail}
             sx={{ width: 100, height: 100 }}
           />
         </Stack>
