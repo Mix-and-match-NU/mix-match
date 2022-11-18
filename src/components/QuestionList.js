@@ -5,7 +5,7 @@ function QuestionList() {
 
 
   const list = questionData.map((questions) => {
-    console.log("QUESTION LIST", questions);
+    // console.log("QUESTION LIST", questions);
 
     return (
       <Question
