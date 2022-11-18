@@ -1,5 +1,4 @@
-import { useState } from "react";
-import Question from "./Question";
+import Question from "../Pages/Question";
 import { questionData } from "../data/questionData";
 
 function QuestionList() {
