@@ -7,7 +7,23 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
 function Question({ question, list }) {
-  console.log(question, "question test in question.js");
+  // console.log(question, "question test in question.js");
+
+  const { loading, error, data } = useQuery(QUERY_SONGS);
+  console.log('SONG DATA', data)
+
+  const songs = data?.songs || [];
+
+  const options = songs.map(song => {
+    return(
+      { label : song.title }
+    )
+  })
+
+  console.error(JSON.stringify(error,null,2));
+
+console.log('give us our songs!!', songs)
+
 
   return (
     <>
@@ -20,7 +36,7 @@ function Question({ question, list }) {
         <Autocomplete
           disablePortal
           id="combo-box-demo"
-          options={""}
+          options={options}
           sx={{ width: 300 }}
           renderInput={(params) => <TextField {...params} 
           label="Song" />}

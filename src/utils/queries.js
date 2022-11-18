@@ -37,7 +37,6 @@ export const QUERY_SONGS = gql`
             artist
             album
             year
-            genre
         }
     }
 `;
