@@ -40,8 +40,9 @@
 nav{
   list-style: none;
   display: flexbox;
+  
 }
-li{
+Link{
   display: inline-block;
   margin: 5px;
 }

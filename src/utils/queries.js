@@ -10,7 +10,7 @@ export const QUERY_USERS = gql`
                 artist
                 album
                 year
-                genre
+            
             }
         }
     }
