@@ -5,6 +5,16 @@ export const QUERY_USERS = gql`
         users {
             _id
             username
+            first_name
+            last_name
+            location
+            age
+            avatar {
+                large
+                medium
+                thumbnail
+
+            }
             playlist {
                 title
                 artist

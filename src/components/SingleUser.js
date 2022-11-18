@@ -1,3 +1,4 @@
+import { avatarClasses } from "@mui/material";
 import { QUERY_USERS } from "../utils/queries";
 
 const SingleUser = ({
@@ -11,7 +12,14 @@ const SingleUser = ({
   return (
     <>
       <div>{users && users.map((user)=> (
-        <div key={user._id}>{user.username}</div>
+        <div key={user._id}>
+        <h3>{user.username}</h3> 
+        <img alt="headshot" src={user.avatar[0].thumbnail}></img>
+        <p>{user.first_name} {user.last_name}</p>
+        <p>{user.age}</p>
+        <p>{user.location}</p>
+        {/* Needs playlist */}
+        </div>
       ))}</div>
     </>
   );
