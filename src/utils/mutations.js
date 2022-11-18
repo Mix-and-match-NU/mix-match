@@ -20,21 +20,12 @@ export const LOGIN_USER = gql`
 // Sign up requires all of the user data - possible refactor if this isn't the case or if there is another way to pass the request body.
 // Check playlist call for syntax - I wasn't super sure this was how to call it.*** 
 export const SIGNUP_USER = gql`
-    mutation addUser($username: String!, $email: String!, $password: String!, $location: String!, $first_name: String!, $last_name: String!, $age: Number!, $playlist: String) {
-        addUser(username: $username, password: $password) {
+    mutation addUser($username: String!, $email: String!, $password: String!) {
+        addUser(email: $email, username: $username, password: $password) {
             token
             user {
                 _id
                 username
-                email
-                location
-                first_name
-                last_name
-                age
-                playlist {
-                    _id
-                    title
-                }
             }
         }
     }
