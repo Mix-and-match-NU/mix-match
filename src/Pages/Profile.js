@@ -20,42 +20,44 @@ import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 export default function Profile() {
   const { userId } = useParams();
 
-  const { loading, data } = useQuery(
+  const { loading, error, data } = useQuery(
     userId ? QUERY_SINGLE_USER : QUERY_ME, {
     variables: { userId: userId },
   });
 
-  console.log(userId ? 'query_single' : 'QUERY_ME')
-  console.log('data',data)
-  console.log('userId')
+  // console.log(userId ? 'query_single' : 'QUERY_ME')
+  
+  if (data) {
+    console.log('this is data',data.me.username)
+  }
+  // console.log('userId')
 
   const user = data?.me || data?.user || {};
-
-  if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
-    console.log('going to your profile')
-    return <Navigate to="/me" />;
-  }
 
   if (loading) {
     return <div>Loading...</div>;
   }
-
+  console.error(JSON.stringify(error,null,2))
+  if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
+    console.log('going to your profile')
+    return <Navigate to="/me" />;
+  }
   return (
     <>
       {/* Avatar */}
+
       <div>
         <Stack direction="row" spacing={2}>
           <Avatar
             alt="user"
-            src=""
+            src={user.avatar[0].thumbnail}
             sx={{ width: 100, height: 100 }}
           />
         </Stack>
       </div>
-
-      {/* Username */}
+      
       <div>
-        Welcome, user!
+        Welcome, {user.username}!
       </div>
 
       {/* Card */}
@@ -67,7 +69,7 @@ export default function Profile() {
               color="text.secondary"
               gutterBottom
             >
-              Word
+              Name: {user.first_name}  {user.last_name} 
             </Typography>
             <Typography variant="h5" component="div">
               benevolent
