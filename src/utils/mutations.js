@@ -4,7 +4,7 @@ import { gql } from '@apollo/client';
 //May need additional fields - only passed the username and id in the query for testing
 //backend only calls for "name" please verify that name is needed instead of username***
 export const LOGIN_USER = gql` 
-    mutation Login($username: String!, $password: String!) {
+    mutation login($username: String!, $password: String!) {
         login(username: $username, password: $password) {
             token
             user {

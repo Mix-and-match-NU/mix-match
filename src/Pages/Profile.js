@@ -53,7 +53,7 @@ export default function Profile() {
         <Stack direction="row" spacing={2}>
           <Avatar
             alt="user"
-            src={avatar.length === 0 ? '' : avatar[0].thumbnail}
+            src={avatar.length == null ? '' : user.avatar[0].thumbnail}
             sx={{ width: 100, height: 100 }}
           />
         </Stack>
