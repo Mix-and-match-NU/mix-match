@@ -3,6 +3,10 @@ import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
+
+import Question from "./Question";
+
+
 // Material UI
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -12,39 +16,55 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
 // Importing data from queries, which is calling from backend
 import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 
+// Question data
+import { questionData } from "../data/questionData";
+
 export default function Profile() {
+
+  //! User Info
   const { userId } = useParams();
 
   const { loading, error, data } = useQuery(
-    userId ? QUERY_SINGLE_USER : QUERY_ME, {
-    variables: { userId: userId },
-  });
+    userId ? QUERY_SINGLE_USER : QUERY_ME,
+    {
+      variables: { userId: userId },
+    }
+  );
 
   // console.log(userId ? 'query_single' : 'QUERY_ME')
-  
+
   if (data) {
-    console.log('this is data',data.me.username)
+    console.log("this is data", data.me.username);
   }
   // console.log('userId')
 
-
   const user = data?.me || data?.user || {};
   // console.log('new user data',user)
-  const avatar = user?.avatar || {}
+  const avatar = user?.avatar || {};
 
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.error(JSON.stringify(error,null,2))
+  console.error(JSON.stringify(error, null, 2));
   if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
-    console.log('going to your profile')
+    console.log("going to your profile");
     return <Navigate to="/Profile" />;
   }
+
+  //! Question Info
+
+  const profileQuestion = questionData.map((questions) => {
+    console.log("this is a question", questions);
+
+    return <h2 key={questions.id} question={questions}>{questions.text}</h2>;
+  });
+  console.log("prof qs", profileQuestion)
+
   return (
     <>
       {/* Avatar */}
@@ -53,32 +73,23 @@ export default function Profile() {
         <Stack direction="row" spacing={2}>
           <Avatar
             alt="user"
-            src={avatar.length == null ? '' : user.avatar[0].thumbnail}
+            src={avatar.length == null ? "" : user.avatar[0].thumbnail}
             sx={{ width: 100, height: 100 }}
           />
         </Stack>
       </div>
-      
-      <div>
-        Welcome, {user.username}!
-      </div>
+
+      <div>Welcome, {user.username}!</div>
 
       {/* Card */}
       <div>
         <Card sx={{ minWidth: 275 }}>
           <CardContent>
-            <Typography
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
-              Name: {user.first_name}  {user.last_name} 
-            </Typography>
             <Typography variant="h5" component="div">
-              benevolent
+              Your Playlist
             </Typography>
             <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              adjective
+              QUESTION {profileQuestion}
             </Typography>
             <Typography variant="body2">
               well meaning and kindly.

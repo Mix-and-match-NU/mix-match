@@ -67,7 +67,7 @@ function App() {
                  element={<Signup />}/>
                <Route 
                  path="/Profile" 
-                 element={<Profile />}/>
+                 element={<Profile data={questionData} />}/>
                <Route 
                  path="/QuestionList" 
                  element={<QuestionList data={questionData} />}/>
