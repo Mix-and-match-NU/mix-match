@@ -20,8 +20,10 @@ import QuestionList from './components/QuestionList';
 import { questionData } from './data/questionData';
 
 // Construct our main GraphQL API endpoint
+const url = process.env.NODE_ENV === 'development'
+            ? '/graphql' : 'https://mix-match-backend.herokuapp.com/graphql'
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: url,
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
