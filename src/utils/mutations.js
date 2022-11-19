@@ -34,18 +34,19 @@ export const SIGNUP_USER = gql`
 // add song may only require the user Id and song Id - can debug if there are issues. ***
 export const ADD_SONG = gql`
 
-    mutation addSong($userId: String!, $songId: String!, $title: String, $artist: String!, $album: String!, $year: String!) {
-        addSong(userId: $userId, songId: $songId) {
-            _id
-            playlist{
-                _id
-                title
-                artist
-                album
-                year
-            }
-        }
+mutation Mutation($userId: String!, $songId: String!, $title: String!, $artist: String!, $album: String!, $year: String!) {
+    addSong(userId: $userId, songId: $songId, title: $title, artist: $artist, album: $album, year: $year) {
+    _id
+    username
+    playlist {
+        _id
+        title
+        artist
+        album
+        year
+    }  
     }
+}
 `;
 
 
