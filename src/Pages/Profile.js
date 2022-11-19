@@ -22,7 +22,6 @@ import Auth from "../utils/auth";
 import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 
 // Question data
-import { questionData } from "../data/questionData";
 
 export default function Profile() {
 
@@ -58,12 +57,7 @@ export default function Profile() {
 
   //! Question Info
 
-  const profileQuestion = questionData.map((questions) => {
-    console.log("this is a question", questions);
 
-    return <h2 key={questions.id} question={questions}>{questions.text}</h2>;
-  });
-  console.log("prof qs", profileQuestion)
 
   return (
     <>
@@ -87,9 +81,6 @@ export default function Profile() {
           <CardContent>
             <Typography variant="h5" component="div">
               Your Playlist
-            </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              QUESTION {profileQuestion}
             </Typography>
             <Typography variant="body2">
               playlist here <Playlist/>
