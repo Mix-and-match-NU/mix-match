@@ -13,8 +13,8 @@ import { BrowserRouter, Routes, Route, Router } from 'react-router-dom';
 import Home from './Pages/Home'
 import Signup from './Pages/Signup';
 import Login from './Pages/Login';
-import Footer from './components/footer';
-import Navbar from './components/navbar';
+import Footer from './components/Footer';
+import Navbar from './components/Navbar';
 import Profile from './Pages/Profile';
 import QuestionList from './components/QuestionList';
 import { questionData } from './data/questionData';
@@ -67,7 +67,7 @@ function App() {
                  element={<Signup />}/>
                <Route 
                  path="/Profile" 
-                 element={<Profile />}/>
+                 element={<Profile data={questionData} />}/>
                <Route 
                  path="/QuestionList" 
                  element={<QuestionList data={questionData} />}/>
