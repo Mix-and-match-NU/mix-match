@@ -8,7 +8,6 @@ import Auth from '../utils/auth';
 export default function Login(props) {
   const [formState, setFormState] = useState({ username: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
-  console.log(login)
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -26,12 +25,11 @@ export default function Login(props) {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+
     try {
       const { data } = await login({
         variables: { ...formState },
       });
-      console.log("try", data)
       Auth.login(data.login.token);
     } catch (e) { 
       console.error(e);
@@ -41,7 +39,6 @@ export default function Login(props) {
       username: '',
       password: '',
     });
-    console.log('LOGIN FORM SUBMIT', data)
   };
 
 return (
@@ -59,7 +56,7 @@ return (
             onChange={handleChange}
           />
             <input
-            className="inputEmail"
+            className="inputPassword"
             placeholder="******"
             name="password"
             type="password"

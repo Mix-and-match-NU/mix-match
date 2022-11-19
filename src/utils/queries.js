@@ -5,6 +5,7 @@ export const QUERY_USERS = gql`
         users {
             _id
             username
+            password
             first_name
             last_name
             location
@@ -68,6 +69,10 @@ export const QUERY_ME = gql`
     me {
     _id
     username
+    first_name
+    last_name
+    location
+    age
     avatar {
         large
         medium 
