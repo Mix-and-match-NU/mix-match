@@ -23,7 +23,7 @@ class AuthService {
   
     logout() {
       localStorage.removeItem('id_token');
-      window.location.reload(); // removes the token from local storage and reloads the page.
+      window.location.assign('/Login'); // removes the token from local storage and reloads the page.
     }
   }
   
