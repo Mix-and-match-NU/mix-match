@@ -43,7 +43,7 @@ export default function Profile() {
   console.error(JSON.stringify(error,null,2))
   if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
     console.log('going to your profile')
-    return <Navigate to="/me" />;
+    return <Navigate to="/Profile" />;
   }
   return (
     <>

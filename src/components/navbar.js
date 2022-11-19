@@ -1,59 +1,49 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React from "react";
+import { Link, Navigate } from "react-router-dom";
+import Auth from '../utils/auth';
 
 const Navbar = () => {
-    return (
-        <div>
-            <nav>
-                <Link to='/'>                
-                     Home 
-                </Link>
-                <Link to='/Login'>                
-                     Login
-                </Link>
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
-                <Link to='/Signup'>
-                    Sign Up
-                </Link>
+  return (
+    <>
+      <div>
+        <nav>
+          <Link to="/">Home</Link>
+          {/* <Link to="/Login">Login</Link>
 
-                <Link to='/Profile'>
-                    Profile
-                </Link>
-                <Link to='/QuestionList'>
-                    Question List
-                </Link>
-            </nav>
-        </div>
-        // <div className='nav'>
-        //     <nav className='navbar'>
-        //         <ul>
-        //         <li>
-        //             <Link to= "/Home">                
-        //                 Home
-        //             </Link>
-        //         </li>
-        //         <li>
-        //             <Link to= '/Profile'> 
-        //                 Profile
-        //             </Link>
-        //         </li>
-        //         <li>
-        //             <Link to= '/Signup'> 
-        //                 Sign up
-        //             </Link>
-        //         </li>
-        //         <li>
-        //             <Link to= '/Login'> 
-        //                 Log In
-        //             </Link>
-        //         </li>
-        //         </ul>
+          <Link to="/Signup">Sign Up</Link> */}
 
-        //     </nav>
-        // </div>
-    )
-    
-}
+          {/* <Link to="/Profile">Profile</Link> */}
+          <Link to="/QuestionList">Question List</Link>
+       
+
+        {Auth.loggedIn() ? (
+          <>
+            <Link to="/Profile">
+              Profile
+             </Link>
+            <button  onClick={logout}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to="/Login">
+              Login
+            </Link>
+            <Link to="/Signup">
+              Sign Up
+            </Link>
+          </>
+        )}
+         </nav>
+      </div>
+    </>
+  );
+};
 
 export default Navbar;
- 
