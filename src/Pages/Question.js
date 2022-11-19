@@ -6,23 +6,29 @@ import { QUERY_SONGS } from "../utils/queries";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
-function Question({ question, list }) {
+
+function Question({ question, list, setResponse, userResponses, index }) {
   // console.log(question, "question test in question.js");
 
   const { loading, error, data } = useQuery(QUERY_SONGS);
-  console.log('SONG DATA', data)
+  // console.log('SONG DATA', data)
 
   const songs = data?.songs || [];
-
+  // console.log(songs)
   const options = songs.map(song => {
     return(
-      { label : song.title }
+      {
+        id: song._id,
+        label : song.title,
+        album: song.album,
+        year: song.year
+       }
     )
   })
 
   console.error(JSON.stringify(error,null,2));
 
-console.log('give us our songs!!', songs)
+// console.log('give us our songs!!', songs)
 
 
   return (
@@ -38,9 +44,15 @@ console.log('give us our songs!!', songs)
           id="combo-box-demo"
           options={options}
           sx={{ width: 300 }}
+          
           renderInput={(params) => <TextField {...params} 
-          label="Song" />}
-        />
+          label="Song" 
+          />}
+          onChange={(event, newValue) => {
+            userResponses[index]=newValue;
+            setResponse(userResponses)
+          }}
+          />
       </div>
     </>
   );
