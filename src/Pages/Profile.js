@@ -13,9 +13,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
-import { deepOrange, deepPurple } from '@mui/material/colors';
-
-
+import { deepOrange, deepPurple } from "@mui/material/colors";
 
 import Auth from "../utils/auth";
 
@@ -65,14 +63,17 @@ export default function Profile() {
         <Stack direction="row" spacing={2}>
           <Avatar
             alt="user"
-            sx={{ bgcolor: deepPurple[500] }}
+            sx={{ bgcolor: deepPurple[500], width: 100, height: 100 }}
             // src={avatar.length == null ? "" : user.avatar[0].large}
             // sx={{ width: 100, height: 100 }}
           />
+          <div>
+            <h2>Welcome, {user.first_name}!</h2>
+          </div>
         </Stack>
       </div>
 
-      <div>Welcome, {user.first_name}!</div>
+      {/* <div>Welcome, {user.first_name}!</div> */}
 
       {/* Card */}
       <div>
@@ -82,7 +83,7 @@ export default function Profile() {
               Your Playlist
             </Typography>
             <Typography variant="body2">
-              playlist here <Playlist />
+              <Playlist />
             </Typography>
           </CardContent>
           <CardActions>

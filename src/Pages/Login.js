@@ -56,56 +56,76 @@ export default function Login(props) {
     });
   };
 
+  // Pointer leave
+  const [pointer, pointerSetError] = useState("");
+
+  function pointerLeave(event) {
+    if (!event.target.value) {
+      pointerSetError("*All fields are required.");
+    } else {
+      pointer("");
+    }
+  }
+
   return (
-    <div>
-      <Box
-        component="form"
-        sx={{
-          "& .MuiTextField-root": { m: 1, width: "25ch" },
-        }}
-        noValidate
-        autoComplete="off"
-        onSubmit={handleFormSubmit}
-      >
-        <div>
-          <div>
-            <TextField
-              className="inputUsername"
-              placeholder="username"
-              name="username"
-              type="text"
-              value={formState.username}
-              onChange={handleChange}
-              label="Username*"
-              variant="standard"
-              helperText="*Required field"
-            />
-            <TextField
-              className="inputPassword"
-              placeholder="******"
-              name="password"
-              value={formState.password}
-              onChange={handleChange}
-              label="Password*"
-              type="password"
-              variant="standard"
-              helperText="*Required field"
-            />
+    <>
+      <h1> {Auth.loggedIn() ? <p>logged in</p> : <p>not logged in</p>}</h1>
+      <div class="formBox">
+        <Box
+          component="form"
+          sx={{
+            "& .MuiTextField-root": { m: 1, width: "25ch" },
+          }}
+          noValidate
+          autoComplete="off"
+          onSubmit={handleFormSubmit}
+        >
+          <div class="innerFormBox">
+            <h2>Login</h2>
+            <div>
+              <TextField
+                className="inputUsername"
+                placeholder="username"
+                name="username"
+                type="text"
+                value={formState.username}
+                onChange={handleChange}
+                onPointerLeave={pointerLeave}
+                label="Username*"
+                variant="standard"
+                helperText="*Required field"
+              />
+              <TextField
+                className="inputPassword"
+                placeholder="******"
+                name="password"
+                value={formState.password}
+                onChange={handleChange}
+                onPointerLeave={pointerLeave}
+                label="Password*"
+                type="password"
+                variant="standard"
+                helperText="*Required field"
+              />
+            </div>
+            <div class="alertDiv">
+              <alert>
+                {pointer && <alert style={{ color: "red" }}>{pointer}</alert>}
+              </alert>
+            </div>
+            <div>
+              <Button
+                className="submit"
+                style={{ cursor: "pointer" }}
+                type="submit"
+                variant="contained"
+              >
+                Submit
+              </Button>
+            </div>
           </div>
-          <div>
-            <Button
-              className="submit"
-              style={{ cursor: "pointer" }}
-              type="submit"
-              variant="contained"
-            >
-              Submit
-            </Button>
-            {Auth.loggedIn() ? <p>logged in</p> : <p>not logged in</p>}
-          </div>
-        </div>
-      </Box>
-    </div>
-    //
+        </Box>
+      </div>
+    </>
   );
 }

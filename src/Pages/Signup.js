@@ -54,7 +54,7 @@ const Signup = () => {
     }
   };
 
-  //! Pointer leave
+  // Pointer leave
   const [pointer, pointerSetError] = useState("");
 
   function pointerLeave(event) {
@@ -99,7 +99,7 @@ const Signup = () => {
                         value={formState.first_name}
                         onChange={handleChange}
                         onPointerLeave={pointerLeave}
-
+                        helperText="*Required field"
                         variant="standard"
                         label="First Name"
                       />
@@ -113,6 +113,7 @@ const Signup = () => {
                         value={formState.last_name}
                         onChange={handleChange}
                         onPointerLeave={pointerLeave}
+                        helperText="*Required field"
                         variant="standard"
                         label="Last Name"
                       />
@@ -126,6 +127,7 @@ const Signup = () => {
                         value={formState.name}
                         onChange={handleChange}
                         onPointerLeave={pointerLeave}
+                        helperText="*Required field"
                         variant="standard"
                         label="Username"
                       />
@@ -139,6 +141,7 @@ const Signup = () => {
                         value={formState.email}
                         onChange={handleChange}
                         onPointerLeave={pointerLeave}
+                        helperText="*Required field"
                         variant="standard"
                         label="Email"
                       />
@@ -152,6 +155,7 @@ const Signup = () => {
                         value={formState.password}
                         onChange={handleChange}
                         onPointerLeave={pointerLeave}
+                        helperText="*Required field"
                         variant="standard"
                         label="Password"
                       />
@@ -165,6 +169,7 @@ const Signup = () => {
                         value={formState.age}
                         onChange={handleChange}
                         onPointerLeave={pointerLeave}
+                        helperText="*Required field"
                         label="Age"
                         variant="standard"
                       />
