@@ -2,13 +2,32 @@ import React, { useState } from "react";
 import Question from "../Pages/Question";
 import { questionData } from "../data/questionData";
 
+import { useMutation } from '@apollo/client'
+import { ADD_SONG } from '../utils/mutations'
+
+const defaultObj = Array(9).fill({
+  title: 'No Song Selected',
+  artist: 'N/A',
+  album: 'N/A',
+  year: 'N/A'
+})
 
 function QuestionList() {
-  const [userResponses, setResponse] = useState(Array(9))
+  const [userResponses, setResponse] = useState(defaultObj)
+  const [addSong, { error, data }] = useMutation(ADD_SONG);
+
 
   const handleFormSubmit = async (event) => {
     event.preventDefault()
-    console.log(userResponses)
+    console.log('userResponse',userResponses)
+    try {
+      const response = await addSong({
+        variables: {playlist: userResponses}
+      })
+      console.log(response)
+    } catch(e) {
+      console.error(JSON.stringify(e,null,2)); 
+    }
   }
 
 
