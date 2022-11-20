@@ -1,26 +1,31 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-import { useMutation } from '@apollo/client';
-import { SIGNUP_USER } from '../utils/mutations';
+import { useMutation } from "@apollo/client";
+import { SIGNUP_USER } from "../utils/mutations";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
+
+// MUI
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 const Signup = () => {
   const [formState, setFormState] = useState({
-    username: '',
-    email: '',
-    password: '',
-    first_name: '',
-    last_name: '',
-    age: '',
+    username: "",
+    email: "",
+    password: "",
+    first_name: "",
+    last_name: "",
+    age: "",
 
     playlist: Array(9).fill({
-      title: 'No Song Selected',
-      artist: 'N/A',
-      album: 'N/A',
-      year: 'N/A'
-    })
+      title: "No Song Selected",
+      artist: "N/A",
+      album: "N/A",
+      year: "N/A",
+    }),
   });
   const [addUser, { error, data }] = useMutation(SIGNUP_USER);
 
@@ -45,7 +50,8 @@ const Signup = () => {
 
       Auth.login(data.addUser.token);
     } catch (e) {
-      console.error(JSON.stringify(e,null,2));    }
+      console.error(JSON.stringify(e, null, 2));
+    }
   };
 
   return (
@@ -56,67 +62,107 @@ const Signup = () => {
           <div className="card-body">
             {data ? (
               <p>
-                Success! You may now head{' '}
+                Success! You may now head{" "}
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your username"
-                  name="username"
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="First name"
-                  name="first_name"
-                  type="text"
-                  value={formState.first_name}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Last name"
-                  name="last_name"
-                  type="text"
-                  value={formState.last_name}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="age"
-                  name="age"
-                  type="number"
-                  value={formState.age}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
+              <div>
+                <Box
+                  component="form"
+                  sx={{
+                    "& .MuiTextField-root": { m: 1, width: "25ch" },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                  onSubmit={handleFormSubmit}
                 >
-                  Submit
-                </button>
-              </form>
+                  {/* <form onSubmit={handleFormSubmit}> */}
+                  <div>
+                    <div>
+                      <TextField
+                        className="form-input"
+                        placeholder="First Name"
+                        name="first_name"
+                        type="text"
+                        value={formState.first_name}
+                        onChange={handleChange}
+                        variant="standard"
+                        label="First Name"
+                      />
+                    </div>
+                    <div>
+                      <TextField
+                        className="form-input"
+                        placeholder="Last Name"
+                        name="last_name"
+                        type="text"
+                        value={formState.last_name}
+                        onChange={handleChange}
+                        variant="standard"
+                        label="Last Name"
+                      />
+                    </div>
+                    <div>
+                      <TextField
+                        className="form-input"
+                        placeholder="Username"
+                        name="username"
+                        type="text"
+                        value={formState.name}
+                        onChange={handleChange}
+                        variant="standard"
+                        label="Username"
+                      />
+                    </div>
+                    <div>
+                      <TextField
+                        className="form-input"
+                        placeholder="Email"
+                        name="email"
+                        type="email"
+                        value={formState.email}
+                        onChange={handleChange}
+                        variant="standard"
+                        label="Email"
+                      />
+                    </div>
+                    <div>
+                      <TextField
+                        className="form-input"
+                        placeholder="******"
+                        name="password"
+                        type="password"
+                        value={formState.password}
+                        onChange={handleChange}
+                        variant="standard"
+                        label="Password"
+                      />
+                    </div>
+                    <div>
+                      <TextField
+                        className="form-input"
+                        placeholder="Age"
+                        name="age"
+                        type="number"
+                        value={formState.age}
+                        onChange={handleChange}
+                        label="Age"
+                        variant="standard"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <Button
+                      className="btn btn-block btn-primary"
+                      style={{ cursor: "pointer" }}
+                      type="submit"
+                      variant="contained"
+                    >
+                      Submit
+                    </Button>
+                  </div>
+                </Box>
+              </div>
             )}
 
             {error && (
