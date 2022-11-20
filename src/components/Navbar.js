@@ -30,9 +30,6 @@ const Navbar = () => {
   };
 
   // Navbar functionality
-  // const pages = ["Home", "Questions", "Profile", "Logout"];
-  const settings = ["Profile", "Logout"];
-
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -155,6 +152,20 @@ const Navbar = () => {
                   Home
                 </Button>
               </Link>
+
+
+
+              
+              
+              <Link to="/QuestionList" style={{ textDecoration: "none" }}>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  Create Your Own Mix
+                </Button>
+              </Link>
+
               <Link to="/Login" style={{ textDecoration: "none" }}>
                 <Button
                   onClick={handleCloseNavMenu}
@@ -169,14 +180,6 @@ const Navbar = () => {
                   sx={{ my: 2, color: "white", display: "block" }}
                 >
                   Sign Up
-                </Button>
-              </Link>
-              <Link to="/QuestionList" style={{ textDecoration: "none" }}>
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  Create Your Own Mix
                 </Button>
               </Link>
             </Box>
@@ -203,6 +206,20 @@ const Navbar = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
+                <MenuItem onClick={handleCloseUserMenu} >
+                  <Link to="/Profile" style={{ textDecoration: "none" }}>
+                  <Typography textAlign="center">Profile</Typography>
+                  </Link>
+                </MenuItem>
+
+
+                <MenuItem onClick={handleCloseUserMenu} >
+                  <Link to="/Profile" style={{ textDecoration: "none" }}>
+                  <Typography textAlign="center" onClick={logout}>Logout</Typography>
+                  </Link>
+                </MenuItem>
+
+
               </Menu>
             </Box>
           </Toolbar>
@@ -234,6 +251,11 @@ const Navbar = () => {
           )}
         </nav>
       </div>
+
+
+
+
+
       {/* Modal */}
       <div>
         <Button onClick={handleOpen}>New Here?</Button>
