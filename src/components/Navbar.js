@@ -1,6 +1,6 @@
 // React utils
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
 
 // MUI
@@ -13,12 +13,7 @@ import Typography from "@mui/material/Typography";
 
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
 
 const Navbar = () => {
   // Navbar auth to display logout button
@@ -29,22 +24,9 @@ const Navbar = () => {
 
   // Navbar functionality
   const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
   };
 
   // Modal style
@@ -66,166 +48,148 @@ const Navbar = () => {
   const handleClose = () => setOpen(false);
 
   return (
-<>
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
+    <>
+      <AppBar position="static">
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              LOGO
+            </Typography>
+
+            <div>
+              {Auth.loggedIn() ? (
+                <>
+                  <Box
+                    sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
+                  >
+                    <Link to="/" style={{ textDecoration: "none" }}>
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{ my: 2, color: "white", display: "block" }}
+                      >
+                        Home
+                      </Button>
+                    </Link>
+
+                    <Link to="/QuestionList" style={{ textDecoration: "none" }}>
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{ my: 2, color: "white", display: "block" }}
+                      >
+                        Create Your Own Mix
+                      </Button>
+                    </Link>
+                    <Link to="/Matches" style={{ textDecoration: "none" }}>
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{ my: 2, color: "white", display: "block" }}
+                      >
+                        Your Matches
+                      </Button>
+                    </Link>
+                    <Link to="/Profile" style={{ textDecoration: "none" }}>
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{ my: 2, color: "white", display: "block" }}
+                      >
+                        Profile
+                      </Button>
+                    </Link>
+                    <Link to="/Login" style={{ textDecoration: "none" }}>
+                      <Button
+                        onClick={logout}
+                        sx={{ my: 2, color: "white", display: "block" }}
+                      >
+                        Logout
+                      </Button>
+                    </Link>
+                  </Box>
+                </>
+              ) : (
+                <>
+                  <Box
+                    sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
+                  >
+                    {" "}
+                    <Link to="/Login" style={{ textDecoration: "none" }}>
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{ my: 2, color: "white", display: "block" }}
+                      >
+                        Login
+                      </Button>
+                    </Link>
+                    <Link to="/Signup" style={{ textDecoration: "none" }}>
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{ my: 2, color: "white", display: "block" }}
+                      >
+                        Sign Up
+                      </Button>
+                    </Link>
+                  </Box>
+                </>
+              )}
+            </div>
+          </Toolbar>
+        </Container>
+      </AppBar>
+
+      <>
+        <div>
+          <Button onClick={handleOpen}>New Here?</Button>
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
             }}
           >
-            LOGO
-          </Typography>
-
-          <div>
-            {Auth.loggedIn() ? (
-              <>
-                <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-                  <Link to="/" style={{ textDecoration: "none" }}>
-                    <Button
-                      onClick={handleCloseNavMenu}
-                      sx={{ my: 2, color: "white", display: "block" }}
-                    >
-                      Home
-                    </Button>
-                  </Link>
-
-                  <Link to="/QuestionList" style={{ textDecoration: "none" }}>
-                    <Button
-                      onClick={handleCloseNavMenu}
-                      sx={{ my: 2, color: "white", display: "block" }}
-                    >
-                      Create Your Own Mix
-                    </Button>
-                  </Link>
-                  <Link to="/Matches" style={{ textDecoration: "none" }}>
-                    <Button
-                      onClick={handleCloseNavMenu}
-                      sx={{ my: 2, color: "white", display: "block" }}
-                    >
-                      See Your Matches
-                    </Button>
-                  </Link>
-                </Box>
-
-                <Box sx={{ flexGrow: 0 }}>
-                  <Tooltip title="Open settings">
-                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                      <Avatar alt="user" />
-                    </IconButton>
-                  </Tooltip>
-                  <Menu
-                    sx={{ mt: "45px" }}
-                    id="menu-appbar"
-                    anchorEl={anchorElUser}
-                    anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
-                    }}
-                    open={Boolean(anchorElUser)}
-                    onClose={handleCloseUserMenu}
-                  >
-                    <MenuItem onClick={handleCloseUserMenu}>
-                      <Link to="/Profile" style={{ textDecoration: "none" }}>
-                        <Typography textAlign="center">Profile</Typography>
-                      </Link>
-                    </MenuItem>
-
-                    <MenuItem onClick={handleCloseUserMenu}>
-                      <Link to="/Profile" style={{ textDecoration: "none" }}>
-                        <Typography textAlign="center" onClick={logout}>
-                          Logout
-                        </Typography>
-                      </Link>
-                    </MenuItem>
-                  </Menu>
-                </Box>
-              </>
-            ) : (
-              <>
-                <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-                  {" "}
-                  <Link to="/Login" style={{ textDecoration: "none" }}>
-                    <Button
-                      onClick={handleCloseNavMenu}
-                      sx={{ my: 2, color: "white", display: "block" }}
-                    >
-                      Login
-                    </Button>
-                  </Link>
-                  <Link to="/Signup" style={{ textDecoration: "none" }}>
-                    <Button
-                      onClick={handleCloseNavMenu}
-                      sx={{ my: 2, color: "white", display: "block" }}
-                    >
-                      Sign Up
-                    </Button>
-                  </Link>
-                </Box>
-              </>
-            )}
-          </div>
-        </Toolbar>
-      </Container>
-    </AppBar>
-
-<>
-      <div>
-        <Button onClick={handleOpen}>New Here?</Button>
-        <Modal
-          aria-labelledby="transition-modal-title"
-          aria-describedby="transition-modal-description"
-          open={open}
-          onClose={handleClose}
-          closeAfterTransition
-          BackdropComponent={Backdrop}
-          BackdropProps={{
-            timeout: 500,
-          }}
-        >
-          <Fade in={open}>
-            <Box sx={style}>
-              <Typography
-                id="transition-modal-title"
-                variant="h6"
-                component="h2"
-              >
-                Welcome to Mix-n-Match!
-              </Typography>
-              <Typography
-                id="transition-modal-description"
-                sx={{ mt: 2 }}
-                variant="subtitle1"
-              >
-                Getting started is easy:{" "}
-              </Typography>
-              <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-                Answer 9 questions related to songs to generate your own
-                playlist, then view other users' playlists to see who you've
-                matched with!
-              </Typography>
-            </Box>
-          </Fade>
-        </Modal>
-      </div>
+            <Fade in={open}>
+              <Box sx={style}>
+                <Typography
+                  id="transition-modal-title"
+                  variant="h6"
+                  component="h2"
+                >
+                  Welcome to Mix-n-Match!
+                </Typography>
+                <Typography
+                  id="transition-modal-description"
+                  sx={{ mt: 2 }}
+                  variant="subtitle1"
+                >
+                  Getting started is easy:{" "}
+                </Typography>
+                <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+                  Answer 9 questions related to songs to generate your own
+                  playlist, then view other users' playlists to see who you've
+                  matched with!
+                </Typography>
+              </Box>
+            </Fade>
+          </Modal>
+        </div>
       </>
-      </>
+    </>
   );
 };
 
