@@ -1,3 +1,6 @@
+// React utils
+import { useState } from "react";
+
 // Data 
 import { useQuery } from "@apollo/client";
 import { QUERY_SONGS } from "../utils/queries";
@@ -32,8 +35,10 @@ function Question({ question, list, setResponse, userResponses, index }) {
 // console.log('give us our songs!!', songs)
 
 
+
   return (
     <>
+
       {/* Question */}
       <div key={question.id}>
         <h5>{question.text}</h5>
