@@ -6,6 +6,6 @@ export const questionData = [
   { id: 5, text: "Which song would you want played at your funeral?" },
   { id: 6, text: "Which song would be the theme of your love life?" },
   { id: 7, text: "Which song is your least favorite?" },
-  { id: 8, text: "Which artist would you most want to have dinner with?" },
+  { id: 8, text: "Which song would you be able to listen to on repeat for the rest of your life?" },
   { id: 9, text: "Which song makes you want to fall in love?" },
 ]

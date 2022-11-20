@@ -3,9 +3,7 @@ import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
-
 import Playlist from "../components/Playlist";
-
 
 // Material UI
 import Card from "@mui/material/Card";
@@ -24,7 +22,6 @@ import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 // Question data
 
 export default function Profile() {
-
   //! User Info
   const { userId } = useParams();
 
@@ -57,8 +54,6 @@ export default function Profile() {
 
   //! Question Info
 
-
-
   return (
     <>
       {/* Avatar */}
@@ -83,13 +78,11 @@ export default function Profile() {
               Your Playlist
             </Typography>
             <Typography variant="body2">
-              playlist here <Playlist/>
-              <br />
-              {'"a benevolent smile"'}
+              playlist here <Playlist />
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Learn More</Button>
+            <Button size="small">Submit?</Button>
           </CardActions>
         </Card>
       </div>
