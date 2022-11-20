@@ -12,9 +12,9 @@ import { QUERY_ME, QUERY_SINGLE_USER } from "../utils/queries";
 
 function Playlist( prop ) {
   const { userId } = prop;
-  console.log(prop)
+  // console.log(prop)
 
-  console.log(userId ? QUERY_SINGLE_USER : QUERY_ME)
+  // console.log(userId ? QUERY_SINGLE_USER : QUERY_ME)
 
   const { loading, error, data } = useQuery(
     userId ? QUERY_SINGLE_USER : QUERY_ME,
@@ -24,18 +24,18 @@ function Playlist( prop ) {
   );
   if (loading) return (<h5>Loading...</h5>)
   
-  console.log(data); 
+  // console.log(data); 
 
   const destructuredData = data?.me || data?.user || Array(9);
   const songs = destructuredData.playlist;
-  console.log(songs);
+  // console.log(songs);
   const range = [...Array(9).keys()];
   const playlist = range.map((index) => {
     const questions = questionData[index];
     const song = songs[index];
-    console.log(index);
-    console.log("questions", questions);
-    console.log("song", song);
+    // console.log(index);
+    // console.log("questions", questions);
+    // console.log("song", song);
     return (
       <>
         <div>
