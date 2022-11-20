@@ -5,6 +5,11 @@ import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { Link, Navigate } from "react-router-dom";
 
+// MUI
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+
 export default function Login(props) {
   const [formState, setFormState] = useState({ username: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
@@ -40,8 +45,8 @@ export default function Login(props) {
       </>;
     } else {
       <>
-      <Navigate to="/Login"></Navigate>
-    </>;
+        <Navigate to="/Login"></Navigate>
+      </>;
     }
 
     // clear form values
@@ -53,28 +58,45 @@ export default function Login(props) {
 
   return (
     <div>
-      <form onSubmit={handleFormSubmit}>
-        <input
+      <Box
+        component="form"
+        sx={{
+          "& .MuiTextField-root": { m: 1, width: "25ch" },
+        }}
+        noValidate
+        autoComplete="off"
+        onSubmit={handleFormSubmit}
+      >
+        <TextField
           className="inputUsername"
-          placeholder="Your username"
+          placeholder="Username"
           name="username"
           type="text"
           value={formState.username}
           onChange={handleChange}
+          label="Username*"
+          variant="standard"
         />
-        <input
+        <TextField
           className="inputPassword"
           placeholder="******"
           name="password"
-          type="password"
           value={formState.password}
           onChange={handleChange}
+          label="password"
+          type="password"
+          variant="standard"
         />
-        <button className="submit" style={{ cursor: "pointer" }} type="submit">
+        <Button
+          className="submit"
+          style={{ cursor: "pointer" }}
+          type="submit"
+          variant="contained"
+        >
           Submit
-        </button>
-      </form>
-      {Auth.loggedIn() ? <p>logged in</p> : <p>not logged in</p>}
+        </Button>
+        {Auth.loggedIn() ? <p>logged in</p> : <p>not logged in</p>}
+      </Box>
     </div>
     //
   );
