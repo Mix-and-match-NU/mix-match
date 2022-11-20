@@ -2,6 +2,9 @@ import React from "react";
 import { Link, Navigate } from "react-router-dom";
 import Auth from '../utils/auth';
 
+// MUI
+import Button from "@mui/material/Button";
+
 const Navbar = () => {
   const logout = (event) => {
     event.preventDefault();
@@ -26,9 +29,9 @@ const Navbar = () => {
             <Link to="/Profile">
               Profile
              </Link>
-            <button  onClick={logout}>
+            <Button  onClick={logout} variant="contained">
               Logout
-            </button>
+            </Button>
           </>
         ) : (
           <>
