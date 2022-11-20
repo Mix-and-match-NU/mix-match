@@ -13,7 +13,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
-import { deepOrange, deepPurple } from "@mui/material/colors";
+import { deepPurple } from "@mui/material/colors";
 
 import Auth from "../utils/auth";
 
@@ -42,7 +42,7 @@ export default function Profile() {
 
   const user = data?.me || data?.user || {};
   // console.log('new user data',user)
-  const avatar = user?.avatar || {};
+  // const avatar = user?.avatar || {};
 
   if (loading) {
     return <div>Loading...</div>;
