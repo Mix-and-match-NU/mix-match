@@ -109,6 +109,14 @@ const Navbar = () => {
                       Create Your Own Mix
                     </Button>
                   </Link>
+                  <Link to="/Matches" style={{ textDecoration: "none" }}>
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{ my: 2, color: "white", display: "block" }}
+                    >
+                      See Your Matches
+                    </Button>
+                  </Link>
                 </Box>
 
                 <Box sx={{ flexGrow: 0 }}>

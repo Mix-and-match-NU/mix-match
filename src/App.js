@@ -13,6 +13,7 @@ import { BrowserRouter, Routes, Route, Router } from 'react-router-dom';
 import Home from './Pages/Home'
 import Signup from './Pages/Signup';
 import Login from './Pages/Login';
+import Matches from './Pages/Matches'
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Profile from './Pages/Profile';
@@ -71,6 +72,9 @@ function App() {
                <Route 
                  path="/QuestionList" 
                  element={<QuestionList data={questionData} />}/>
+               <Route 
+                 path="/Matches" 
+                 element={<Matches />}/>
               </Routes>
              
         </div>

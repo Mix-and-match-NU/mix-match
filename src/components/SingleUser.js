@@ -23,9 +23,9 @@ const SingleUser = ({ users }) => {
   if (!users) {
     return <h3>No Users Yet</h3>;
   }
-  console.log(users);
 
   const handleLike = async (userId) => {
+    console.log('submitted user',userId)
     try {
       const { data } = await likeUser({
         variables: {userId: userId}
