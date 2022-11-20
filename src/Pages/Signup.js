@@ -11,6 +11,16 @@ const Signup = () => {
     username: '',
     email: '',
     password: '',
+    first_name: '',
+    last_name: '',
+    age: '',
+
+    playlist: Array(9).fill({
+      title: 'No Song Selected',
+      artist: 'N/A',
+      album: 'N/A',
+      year: 'N/A'
+    })
   });
   const [addUser, { error, data }] = useMutation(SIGNUP_USER);
 
@@ -26,6 +36,7 @@ const Signup = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
+    formState.age = Number(formState.age);
 
     try {
       const { data } = await addUser({
@@ -72,6 +83,30 @@ const Signup = () => {
                   name="password"
                   type="password"
                   value={formState.password}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="First name"
+                  name="first_name"
+                  type="text"
+                  value={formState.first_name}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="Last name"
+                  name="last_name"
+                  type="text"
+                  value={formState.last_name}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="age"
+                  name="age"
+                  type="number"
+                  value={formState.age}
                   onChange={handleChange}
                 />
                 <button
