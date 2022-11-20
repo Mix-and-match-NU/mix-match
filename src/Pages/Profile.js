@@ -1,10 +1,9 @@
 // React
 import React from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams, Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import Playlist from "../components/Playlist";
-
 // Material UI
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -85,9 +84,9 @@ export default function Profile() {
             <Typography variant="body2">
               <Playlist />
             </Typography>
+            <p>If you would like to make changes to your playlist, please go to the <Link to="/QuestionList"> Question List </Link> tab</p>
           </CardContent>
           <CardActions>
-            <Button size="small">Submit?</Button>
           </CardActions>
         </Card>
       </div>

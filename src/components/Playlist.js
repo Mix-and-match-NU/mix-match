@@ -22,7 +22,7 @@ function Playlist( prop ) {
       variables: { userId: userId },
     }
   );
-  if (loading) return (<h3>Loading...</h3>)
+  if (loading) return (<h5>Loading...</h5>)
   
   console.log(data); 
 

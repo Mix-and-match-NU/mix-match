@@ -22,7 +22,8 @@ function Question({ question, list, setResponse, userResponses, index }) {
     return(
       {
         id: song._id,
-        label : song.title,
+        label : song.title + " By " + song.artist,
+        attribute: song.title,
         album: song.album,
         artist: song.artist,
         year: song.year
@@ -53,10 +54,11 @@ function Question({ question, list, setResponse, userResponses, index }) {
           
           renderInput={(params) => <TextField {...params} 
           label="Song" 
+          
           />}
           onChange={(event, newValue) => {
             const restructuredData = {
-              title: newValue.label,
+              title: newValue.attribute,
               artist: newValue.artist,
               album: newValue.album,
               year: newValue.year
