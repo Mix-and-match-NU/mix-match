@@ -190,6 +190,8 @@ const Signup = () => {
                       >
                         Submit
                       </Button>
+                      <br></br>
+                      <h7>Have an account? <Link to="/Login">Signin</Link></h7>
                     </div>
                   </div>
                 </Box>
