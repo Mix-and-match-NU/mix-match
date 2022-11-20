@@ -11,3 +11,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* ****************** SIGNUP ****************** */
+
+.formBox {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 50px;
+}
+
+.innerFormBox {
+  border: #bcabae solid 1px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 6px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.alertDiv {
+  padding-bottom: 10px;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}

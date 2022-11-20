@@ -54,11 +54,22 @@ const Signup = () => {
     }
   };
 
+  //! Pointer leave
+  const [pointer, pointerSetError] = useState("");
+
+  function pointerLeave(event) {
+    if (!event.target.value) {
+      pointerSetError("*All fields are required.");
+    } else {
+      pointer("");
+    }
+  }
+
   return (
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
+          {/* <h4 className="card-header bg-dark text-light p-2">Sign Up</h4> */}
           <div className="card-body">
             {data ? (
               <p>
@@ -66,7 +77,7 @@ const Signup = () => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <div>
+              <div class="formBox">
                 <Box
                   component="form"
                   sx={{
@@ -76,8 +87,9 @@ const Signup = () => {
                   autoComplete="off"
                   onSubmit={handleFormSubmit}
                 >
-                  {/* <form onSubmit={handleFormSubmit}> */}
-                  <div>
+                  <div class="innerFormBox">
+                    <h2>Sign Up</h2>
+
                     <div>
                       <TextField
                         className="form-input"
@@ -86,6 +98,8 @@ const Signup = () => {
                         type="text"
                         value={formState.first_name}
                         onChange={handleChange}
+                        onPointerLeave={pointerLeave}
+
                         variant="standard"
                         label="First Name"
                       />
@@ -98,6 +112,7 @@ const Signup = () => {
                         type="text"
                         value={formState.last_name}
                         onChange={handleChange}
+                        onPointerLeave={pointerLeave}
                         variant="standard"
                         label="Last Name"
                       />
@@ -110,6 +125,7 @@ const Signup = () => {
                         type="text"
                         value={formState.name}
                         onChange={handleChange}
+                        onPointerLeave={pointerLeave}
                         variant="standard"
                         label="Username"
                       />
@@ -122,6 +138,7 @@ const Signup = () => {
                         type="email"
                         value={formState.email}
                         onChange={handleChange}
+                        onPointerLeave={pointerLeave}
                         variant="standard"
                         label="Email"
                       />
@@ -134,6 +151,7 @@ const Signup = () => {
                         type="password"
                         value={formState.password}
                         onChange={handleChange}
+                        onPointerLeave={pointerLeave}
                         variant="standard"
                         label="Password"
                       />
@@ -146,30 +164,34 @@ const Signup = () => {
                         type="number"
                         value={formState.age}
                         onChange={handleChange}
+                        onPointerLeave={pointerLeave}
                         label="Age"
                         variant="standard"
                       />
                     </div>
-                  </div>
-                  <div>
-                    <Button
-                      className="btn btn-block btn-primary"
-                      style={{ cursor: "pointer" }}
-                      type="submit"
-                      variant="contained"
-                    >
-                      Submit
-                    </Button>
+                    <div class="alertDiv">
+                      <alert>
+                        {pointer && (
+                          <alert style={{ color: "red" }}>{pointer}</alert>
+                        )}
+                      </alert>
+                    </div>
+                    <div>
+                      <Button
+                        className="btn btn-block btn-primary"
+                        style={{ cursor: "pointer" }}
+                        type="submit"
+                        variant="contained"
+                      >
+                        Submit
+                      </Button>
+                    </div>
                   </div>
                 </Box>
               </div>
             )}
 
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
+            {error && <div className="my-3 p-3 bg-danger">{error.message}</div>}
           </div>
         </div>
       </div>
