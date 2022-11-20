@@ -1,6 +1,7 @@
 import { avatarClasses } from "@mui/material";
 import { QUERY_USERS } from "../utils/queries";
 
+import Playlist from "../components/Playlist";
 // MUI
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -18,7 +19,7 @@ const SingleUser = ({ users }) => {
 
   return (
     <>
-      <div classname="allUsers">
+      <div className="allUsers">
         {users &&
           users.map((user) => (
             <Card key={user._id}>
@@ -34,10 +35,10 @@ const SingleUser = ({ users }) => {
                 <Typography>{user.age}</Typography>
                 <Typography>{user.location}</Typography>
                 {/* Needs playlist */}
-
+                <Playlist userId={user._id} />
                 {/*Like and Dislike Button*/}
-                <Button onclick="" color="primary">Like</Button>
-                <Button onclick="" color="secondary">Dislike</Button>
+                <Button color="primary">Like</Button>
+                <Button color="secondary">Dislike</Button>
               </CardContent>
             </Card>
           ))}

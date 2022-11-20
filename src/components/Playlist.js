@@ -10,8 +10,11 @@ import Typography from "@mui/material/Typography";
 
 import { QUERY_ME, QUERY_SINGLE_USER } from "../utils/queries";
 
-function Playlist() {
-  const { userId } = useParams();
+function Playlist( prop ) {
+  const { userId } = prop;
+  console.log(prop)
+
+  console.log(userId ? QUERY_SINGLE_USER : QUERY_ME)
 
   const { loading, error, data } = useQuery(
     userId ? QUERY_SINGLE_USER : QUERY_ME,
@@ -19,6 +22,9 @@ function Playlist() {
       variables: { userId: userId },
     }
   );
+  if (loading) return (<h3>Loading...</h3>)
+  
+  console.log(data); 
 
   const destructuredData = data?.me || data?.user || Array(9);
   const songs = destructuredData.playlist;
