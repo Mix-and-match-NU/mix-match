@@ -8,25 +8,23 @@ import SingleUser from "../components/SingleUser";
 import Auth from "../utils/auth";
 
 // Importing data from queries, which is calling from backend
-import { QUERY_MATCHES,QUERY_ME } from "../utils/queries";
+import { QUERY_MATCHES} from "../utils/queries";
 
 // Question data
 
 export default function Matches() {
   //! User Info
-  const { meLoading, meError, me } = useQuery(QUERY_ME)
-  const { loading, error, data } = useQuery(QUERY_MATCHES,
-    {variables: { userId: me.me._id }}
-    );
-
-  if(meLoading || loading) {
+  const { loading, error, data } = useQuery(QUERY_MATCHES);
+  
+  console.error(JSON.stringify(error, null, 2));
+  if(loading) {
     return <h2>Loading...</h2>
   }
   // console.log(userId ? 'query_single' : 'QUERY_ME')
 
   if (data) {
     console.log("this is data", data);
-    console.error(JSON.stringify(error, null, 2));
+    
   }
   // console.log('userId')
 

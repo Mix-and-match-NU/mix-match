@@ -97,8 +97,8 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_MATCHES = gql`
-query matches($userId: String!) {
-  matches(userId: $userId) {
+query matches {
+  matches {
     _id
     username
     first_name
