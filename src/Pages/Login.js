@@ -69,7 +69,7 @@ export default function Login(props) {
 
   return (
     <>
-      <h1> {Auth.loggedIn() ? <p>logged in</p> : <p>not logged in</p>}</h1>
+      <h3 className="loginDescrip"> {Auth.loggedIn() ? <p>Logged in, start Matching!</p> : <p>Please login using your credentials <br></br>Or <Link to="/Signup">sign up!</Link></p>}</h3>
       <div class="formBox">
         <Box
           component="form"
