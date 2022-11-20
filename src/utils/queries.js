@@ -95,3 +95,27 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_MATCHES = gql`
+query matches($userId: String!) {
+  matches(userId: $userId) {
+    _id
+    username
+    first_name
+    last_name
+    location
+    age
+    avatar {
+      large
+      medium
+      thumbnail
+    }
+    playlist {
+      _id
+      title
+      artist
+      album
+      year
+    }
+  }
+}`

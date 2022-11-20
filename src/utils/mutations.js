@@ -47,7 +47,7 @@ mutation AddSong($playlist: [SongInput]) {
 
 
 export const LIKE_USER = gql`
-mutation Mutation($userId: String!) {
+mutation Mutation($userId: ID!) {
     likeUser(userId: $userId) {
       _id
       username
