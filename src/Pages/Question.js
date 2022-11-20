@@ -21,6 +21,7 @@ function Question({ question, list, setResponse, userResponses, index }) {
         id: song._id,
         label : song.title,
         album: song.album,
+        artist: song.artist,
         year: song.year
        }
     )
@@ -49,7 +50,13 @@ function Question({ question, list, setResponse, userResponses, index }) {
           label="Song" 
           />}
           onChange={(event, newValue) => {
-            userResponses[index]=newValue;
+            const restructuredData = {
+              title: newValue.label,
+              artist: newValue.artist,
+              album: newValue.album,
+              year: newValue.year
+            }
+            userResponses[index]=restructuredData;
             setResponse(userResponses)
           }}
           />
