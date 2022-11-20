@@ -13,6 +13,9 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
+import { deepOrange, deepPurple } from '@mui/material/colors';
+
+
 
 import Auth from "../utils/auth";
 
@@ -62,13 +65,14 @@ export default function Profile() {
         <Stack direction="row" spacing={2}>
           <Avatar
             alt="user"
-            src={avatar.length == null ? "" : user.avatar[0].thumbnail}
-            sx={{ width: 100, height: 100 }}
+            sx={{ bgcolor: deepPurple[500] }}
+            // src={avatar.length == null ? "" : user.avatar[0].large}
+            // sx={{ width: 100, height: 100 }}
           />
         </Stack>
       </div>
 
-      <div>Welcome, {user.username}!</div>
+      <div>Welcome, {user.first_name}!</div>
 
       {/* Card */}
       <div>
