@@ -15,12 +15,10 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { useRadioGroup } from "@mui/material";
 
 const Navbar = () => {
   // Navbar auth to display logout button
@@ -36,6 +34,7 @@ const Navbar = () => {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -67,196 +66,118 @@ const Navbar = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <>
-      <AppBar position="static">
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              LOGO
-            </Typography>
+<>
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              mr: 2,
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            LOGO
+          </Typography>
 
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: "block", md: "none" },
-                }}
-              >
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Link to="/">
-                    <Typography textAlign="center">blah blah </Typography>
+          <div>
+            {Auth.loggedIn() ? (
+              <>
+                <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+                  <Link to="/" style={{ textDecoration: "none" }}>
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{ my: 2, color: "white", display: "block" }}
+                    >
+                      Home
+                    </Button>
                   </Link>
-                </MenuItem>
-              </Menu>
-            </Box>
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href=""
-              sx={{
-                mr: 2,
-                display: { xs: "flex", md: "none" },
-                flexGrow: 1,
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              LOGO
-            </Typography>
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              <Link to="/" style={{ textDecoration: "none" }}>
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  Home
-                </Button>
-              </Link>
 
-
-
-              
-              
-              <Link to="/QuestionList" style={{ textDecoration: "none" }}>
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  Create Your Own Mix
-                </Button>
-              </Link>
-
-              <Link to="/Login" style={{ textDecoration: "none" }}>
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  Login
-                </Button>
-              </Link>
-              <Link to="/Signup" style={{ textDecoration: "none" }}>
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  Sign Up
-                </Button>
-              </Link>
-            </Box>
-
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="user" />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                <MenuItem onClick={handleCloseUserMenu} >
-                  <Link to="/Profile" style={{ textDecoration: "none" }}>
-                  <Typography textAlign="center">Profile</Typography>
+                  <Link to="/QuestionList" style={{ textDecoration: "none" }}>
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{ my: 2, color: "white", display: "block" }}
+                    >
+                      Create Your Own Mix
+                    </Button>
                   </Link>
-                </MenuItem>
+                </Box>
 
+                <Box sx={{ flexGrow: 0 }}>
+                  <Tooltip title="Open settings">
+                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <Avatar alt="user" />
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    sx={{ mt: "45px" }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    <MenuItem onClick={handleCloseUserMenu}>
+                      <Link to="/Profile" style={{ textDecoration: "none" }}>
+                        <Typography textAlign="center">Profile</Typography>
+                      </Link>
+                    </MenuItem>
 
-                <MenuItem onClick={handleCloseUserMenu} >
-                  <Link to="/Profile" style={{ textDecoration: "none" }}>
-                  <Typography textAlign="center" onClick={logout}>Logout</Typography>
+                    <MenuItem onClick={handleCloseUserMenu}>
+                      <Link to="/Profile" style={{ textDecoration: "none" }}>
+                        <Typography textAlign="center" onClick={logout}>
+                          Logout
+                        </Typography>
+                      </Link>
+                    </MenuItem>
+                  </Menu>
+                </Box>
+              </>
+            ) : (
+              <>
+                <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+                  {" "}
+                  <Link to="/Login" style={{ textDecoration: "none" }}>
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{ my: 2, color: "white", display: "block" }}
+                    >
+                      Login
+                    </Button>
                   </Link>
-                </MenuItem>
+                  <Link to="/Signup" style={{ textDecoration: "none" }}>
+                    <Button
+                      onClick={handleCloseNavMenu}
+                      sx={{ my: 2, color: "white", display: "block" }}
+                    >
+                      Sign Up
+                    </Button>
+                  </Link>
+                </Box>
+              </>
+            )}
+          </div>
+        </Toolbar>
+      </Container>
+    </AppBar>
 
-
-              </Menu>
-            </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
-
-      <div>
-        <nav>
-          <Link to="/">Home</Link>
-          {/* <Link to="/Login">Login</Link>
-
-          <Link to="/Signup">Sign Up</Link> */}
-
-          {/* <Link to="/Profile">Profile</Link> */}
-          <Link to="/QuestionList">Question List</Link>
-
-          {Auth.loggedIn() ? (
-            <>
-              <Link to="/Profile">Profile</Link>
-              <Button onClick={logout} variant="contained">
-                Logout
-              </Button>
-            </>
-          ) : (
-            <>
-              <Link to="/Login">Login</Link>
-              <Link to="/Signup">Sign Up</Link>
-            </>
-          )}
-        </nav>
-      </div>
-
-
-
-
-
-      {/* Modal */}
+<>
       <div>
         <Button onClick={handleOpen}>New Here?</Button>
         <Modal
@@ -295,7 +216,8 @@ const Navbar = () => {
           </Fade>
         </Modal>
       </div>
-    </>
+      </>
+      </>
   );
 };
 
