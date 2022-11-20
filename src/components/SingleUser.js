@@ -38,7 +38,6 @@ const SingleUser = ({ users }) => {
                 <Playlist userId={user._id} />
                 {/*Like and Dislike Button*/}
                 <Button color="primary">Like</Button>
-                <Button color="secondary">Dislike</Button>
               </CardContent>
             </Card>
           ))}
