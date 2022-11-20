@@ -24,7 +24,7 @@ function QuestionList() {
       const response = await addSong({
         variables: {playlist: userResponses}
       })
-      console.log(response)
+      window.location.assign('/Profile');
     } catch(e) {
       console.error(JSON.stringify(e,null,2)); 
     }
