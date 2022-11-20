@@ -18,7 +18,7 @@ const SingleUser = ({ users }) => {
 
   return (
     <>
-      <div>
+      <div classname="allUsers">
         {users &&
           users.map((user) => (
             <Card key={user._id}>
@@ -34,6 +34,10 @@ const SingleUser = ({ users }) => {
                 <Typography>{user.age}</Typography>
                 <Typography>{user.location}</Typography>
                 {/* Needs playlist */}
+
+                {/*Like and Dislike Button*/}
+                <Button onclick="" color="primary">Like</Button>
+                <Button onclick="" color="secondary">Dislike</Button>
               </CardContent>
             </Card>
           ))}
