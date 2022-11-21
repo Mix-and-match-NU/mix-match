@@ -14,6 +14,7 @@ import Typography from "@mui/material/Typography";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
+import { ThemeProvider } from "@mui/material";
 
 const Navbar = () => {
   // Navbar auth to display logout button
@@ -25,7 +26,7 @@ const Navbar = () => {
   // Navbar functionality
   const [anchorElNav, setAnchorElNav] = useState(null);
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (theme) => {
     setAnchorElNav(null);
   };
 
@@ -49,7 +50,7 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar position="static">
+       <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
@@ -90,7 +91,7 @@ const Navbar = () => {
                         onClick={handleCloseNavMenu}
                         sx={{ my: 2, color: "white", display: "block" }}
                       >
-                        Create Your Own Mix
+                        Create A Mix
                       </Button>
                     </Link>
                     <Link to="/Matches" style={{ textDecoration: "none" }}>
@@ -98,7 +99,7 @@ const Navbar = () => {
                         onClick={handleCloseNavMenu}
                         sx={{ my: 2, color: "white", display: "block" }}
                       >
-                        Your Matches
+                        My Matches
                       </Button>
                     </Link>
                     <Link to="/Profile" style={{ textDecoration: "none" }}>
@@ -151,7 +152,7 @@ const Navbar = () => {
 
       <>
         <div>
-          <Button onClick={handleOpen}>New Here?</Button>
+          <Button onClick={handleOpen} color="secondary">New Here?</Button>
           <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
