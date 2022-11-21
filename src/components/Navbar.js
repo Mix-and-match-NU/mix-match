@@ -14,7 +14,8 @@ import Typography from "@mui/material/Typography";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
-import { ThemeProvider } from "@mui/material";
+import { IconButton, ThemeProvider } from "@mui/material";
+import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 
 const Navbar = () => {
   // Navbar auth to display logout button
@@ -50,7 +51,7 @@ const Navbar = () => {
 
   return (
     <>
-       <AppBar position="static">
+      <AppBar position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
@@ -152,7 +153,12 @@ const Navbar = () => {
 
       <>
         <div>
-          <Button onClick={handleOpen} color="secondary">New Here?</Button>
+          <IconButton>
+            <QuestionMarkIcon
+              onClick={handleOpen}
+              color="secondary"
+            ></QuestionMarkIcon>
+          </IconButton>
           <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
