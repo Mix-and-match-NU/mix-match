@@ -14,7 +14,7 @@ import Typography from "@mui/material/Typography";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
-import { IconButton, ThemeProvider } from "@mui/material";
+import { IconButton } from "@mui/material";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 
 const Navbar = () => {
@@ -39,7 +39,8 @@ const Navbar = () => {
     transform: "translate(-50%, -50%)",
     width: 400,
     bgcolor: "background.paper",
-    border: "2px solid #000",
+    color: "primary.contrastText",
+    border: "2px solid #40265B",
     boxShadow: 24,
     p: 4,
   };
@@ -52,7 +53,7 @@ const Navbar = () => {
   return (
     <>
       <>
-        <AppBar position="static">
+        <AppBar position="static" className="navStyle">
           <Container maxWidth="xl">
             <Toolbar disableGutters>
               <Typography

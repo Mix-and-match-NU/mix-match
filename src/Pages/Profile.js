@@ -75,15 +75,17 @@ export default function Profile() {
       {/* <div>Welcome, {user.first_name}!</div> */}
 
       {/* Card */}
-      <div>
-        <Card sx={{ minWidth: 275 }}>
+      <div >
+        <Card sx={{ minWidth: 275 }} className="outterProfileCard">
           <CardContent>
             <Typography variant="h5" component="div">
               Your Playlist
             </Typography>
-            <Typography variant="body2">
+            <div className="playlistResponseCard">
+            <Typography variant="body2" >
               <Playlist />
             </Typography>
+            </div>
             <p>If you would like to make changes to your playlist, please go to the <Link to="/QuestionList"> Question List </Link> tab</p>
           </CardContent>
           <CardActions>
