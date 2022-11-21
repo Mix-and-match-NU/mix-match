@@ -70,7 +70,7 @@ export default function Login(props) {
   return (
     <>
       <h3 className="loginDescrip"> {Auth.loggedIn() ? <p>Logged in, start Matching!</p> : <p>Please login using your credentials <br></br>Or <Link to="/Signup">sign up!</Link></p>}</h3>
-      <div class="formBox">
+      <div className="formBox">
         <Box
           component="form"
           sx={{
@@ -80,7 +80,7 @@ export default function Login(props) {
           autoComplete="off"
           onSubmit={handleFormSubmit}
         >
-          <div class="innerFormBox">
+          <div className="innerFormBox">
             <h2>Login</h2>
             <div>
               <TextField
@@ -108,7 +108,7 @@ export default function Login(props) {
                 helperText="*Required field"
               />
             </div>
-            <div class="alertDiv">
+            <div className="alertDiv">
               <alert>
                 {pointer && <alert style={{ color: "red" }}>{pointer}</alert>}
               </alert>

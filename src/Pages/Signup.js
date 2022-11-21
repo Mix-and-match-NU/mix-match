@@ -77,7 +77,7 @@ const Signup = () => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <div class="formBox">
+              <div className="formBox">
                 <Box
                   component="form"
                   sx={{
@@ -87,7 +87,7 @@ const Signup = () => {
                   autoComplete="off"
                   onSubmit={handleFormSubmit}
                 >
-                  <div class="innerFormBox">
+                  <div className="innerFormBox">
                     <h2>Sign Up</h2>
 
                     <div>
@@ -174,7 +174,7 @@ const Signup = () => {
                         variant="standard"
                       />
                     </div>
-                    <div class="alertDiv">
+                    <div className="alertDiv">
                       <alert>
                         {pointer && (
                           <alert style={{ color: "red" }}>{pointer}</alert>
