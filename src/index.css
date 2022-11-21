@@ -46,3 +46,16 @@ code {
   display: flex;
   justify-content: center;
 }
+
+.playlist {
+  width: 50%;
+  justify-content: center;
+  display: flex;
+  margin: auto;
+}
+
+.playlist div {
+  width: 100%;
+  margin:1px;
+  border: solid white
+}

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { questionData } from "../data/questionData";
 
 // MUI
+import Grid from '@mui/material/Grid'
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -38,7 +39,7 @@ function Playlist( prop ) {
     // console.log("song", song);
     return (
       <>
-        <div>
+        <div className="playlist">
           <Card sx={{ minWidth: 275 }}>
             <CardContent>
               <div>
