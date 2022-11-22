@@ -68,14 +68,14 @@ const Navbar = () => {
                   sx={{
                     mr: 2,
                     display: { xs: "none", md: "flex" },
-                    fontFamily: "monospace",
+                    fontFamily: "",
                     fontWeight: 700,
                     letterSpacing: ".3rem",
                     color: "white",
                     textDecoration: "none",
                   }}
                 >
-                  LOGO
+                  Mix n Match
                 </Typography>
 
                 <div className="navEls">
