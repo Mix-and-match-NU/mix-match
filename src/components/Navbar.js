@@ -134,10 +134,11 @@ const Navbar = () => {
                           </Button>
                         </Link>
 
-                          <IconButton>
+                          <IconButton >
                             <QuestionMarkIcon
                               onClick={handleOpen}
                               color="secondary"
+                              className="iconButton"
                             ></QuestionMarkIcon>
                           </IconButton>
                           <Modal

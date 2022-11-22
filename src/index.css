@@ -22,8 +22,9 @@ code {
   border-bottom: 1px solid #40265B;
 }
 
-.navEls{
-
+.iconButton{
+border: #fff6f7 solid 1px;
+border-radius: 50%;
 }
 
 /* ****************** LOGIN ****************** */
