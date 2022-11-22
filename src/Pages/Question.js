@@ -41,11 +41,11 @@ function Question({ question, list, setResponse, userResponses, index }) {
     <>
 
       {/* Question */}
-      <div key={question.id}>
+      <div key={question.id} className="questionText">
         <h5>{question.text}</h5>
       </div>
       {/* Song Data */}
-      <div className="autocomplete1">
+      <div>
         <Autocomplete
           disablePortal
           id="combo-box-demo"
