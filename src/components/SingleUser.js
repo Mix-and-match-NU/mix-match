@@ -20,7 +20,7 @@ const SingleUser = ({ users }) => {
   const [likeUser, { error, data }] = useMutation(LIKE_USER);
 
 
-  if (!users) {
+  if (!users || users.length === 0) {
     return <h3>No Users Yet</h3>;
   }
 
