@@ -74,20 +74,22 @@ border-radius: 50%;
 /* ****************** PROFILE AND PLAYLIST ****************** */
 
 .outterProfileCard {
-  border: 1px solid #3B1760;
+  border: 3px solid #3B1760;
   border-radius: 6px ;
   justify-content: center;
   display: flex;
   margin: auto;
-  width: 80%;
+  width: 60%;
 }
 
 .playlist {
-  width: 50%;
+  width: 90%;
   justify-content: center;
   display: flex;
   margin: auto;
+  margin-bottom:10px;
   border: 1px solid #3B1760;
+  box-shadow: #3B1760 0px 2px 8px 0px;
   border-radius: 5px;
 }
 
@@ -99,5 +101,13 @@ border-radius: 50%;
 }
 
 .playlistResponseCard {
-  padding: 40px;
+  padding: 5px;
+}
+
+.spacerDiv {
+  height: 25px;
+}
+
+.headerDiv {
+  font-size: 1.3rem;
 }

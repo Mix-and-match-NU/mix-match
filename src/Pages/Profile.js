@@ -58,7 +58,7 @@ export default function Profile() {
     <>
       {/* Avatar */}
 
-      <div>
+      <div className="AvatarDiv">
         <Stack direction="row" spacing={2}>
           <Avatar
             alt="user"
@@ -66,10 +66,12 @@ export default function Profile() {
             // src={avatar.length == null ? "" : user.avatar[0].large}
             // sx={{ width: 100, height: 100 }}
           />
-          <div>
+          <div className="headerDiv">
             <h2>Welcome, {user.first_name}!</h2>
           </div>
         </Stack>
+      </div>
+      <div className="spacerDiv">
       </div>
 
       {/* <div>Welcome, {user.first_name}!</div> */}
