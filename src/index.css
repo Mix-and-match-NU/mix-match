@@ -169,4 +169,9 @@ padding: 10px;
 /* .userInfoSection{
   border: red 1px solid;
 } */
-
+/*Navbar styling*/
+.navEls button:hover {
+  transition: .05;
+  text-shadow: 0 0 3px #e0c5d3;
+  
+}
