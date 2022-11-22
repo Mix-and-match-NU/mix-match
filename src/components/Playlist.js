@@ -27,13 +27,18 @@ function Playlist( prop ) {
   
   // console.log(data); 
   console.log(userId)
-  const destructuredData = data?.me || data?.user || Array(9);
+  const destructuredData = data?.me || data?.user || Array(9).fill({
+    title: 'No Song Selected',
+    artist: 'N/A',
+    album: 'N/A',
+    year: 'N/A'
+  });
   const songs = destructuredData.playlist;
   // console.log(songs);
   const range = [...Array(9).keys()];
   const playlist = range.map((index) => {
     const questions = questionData[index];
-    const song = songs[index];
+    const song = songs[index]; 
     // console.log(index);
     // console.log("questions", questions);
     // console.log("song", song);
