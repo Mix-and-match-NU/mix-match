@@ -55,7 +55,6 @@ function Playlist( prop ) {
                   <div>
                     <Typography
                       variant="subtitle1"
-                      sx={{ textDecoration: "underline" }}
                     >
                       {song.title}
                     </Typography>
