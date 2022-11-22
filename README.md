@@ -13,6 +13,12 @@ Grayson Harvey
 Eric Mcghee
 
 
+## Design Criteria
+
+
+<img width="317" alt="image(1)" src="https://user-images.githubusercontent.com/31641912/203219841-cf3a5de5-1307-4bda-b9fc-8b0587597486.png">
+
+
 ## Dependencies
 
 Mix N Match is a React app with a MongoDB backend.
