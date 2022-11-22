@@ -114,7 +114,7 @@ const Navbar = () => {
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: "white", display: "block" }}
                           >
-                            My Matches
+                            Matches
                           </Button>
                         </Link>
                         <Link to="/Profile" style={{ textDecoration: "none" }}>
@@ -134,10 +134,11 @@ const Navbar = () => {
                           </Button>
                         </Link>
 
-                          <IconButton>
+                          <IconButton >
                             <QuestionMarkIcon
                               onClick={handleOpen}
                               color="secondary"
+                              className="iconButton"
                             ></QuestionMarkIcon>
                           </IconButton>
                           <Modal
