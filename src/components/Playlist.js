@@ -27,12 +27,12 @@ function Playlist( prop ) {
   
   // console.log(data); 
   console.log(userId)
-  const destructuredData = data?.me || data?.user || Array(9).fill({
+  const destructuredData = data?.me || data?.user || { playlist: Array(9).fill({
     title: 'No Song Selected',
     artist: 'N/A',
     album: 'N/A',
     year: 'N/A'
-  });
+  })};
   const songs = destructuredData.playlist;
   // console.log(songs);
   const range = [...Array(9).keys()];
