@@ -48,7 +48,7 @@ function Playlist( prop ) {
         <div className="playlist">
           <Card sx={{ minWidth: 275 }}>
             <CardContent>
-              <div>
+              <div className="questionsDiv">
                 <Typography
                   color="text.secondary"
                   component="div"
@@ -60,12 +60,13 @@ function Playlist( prop ) {
                 <div key={song._id}>
                   <div>
                     <Typography
+
                       variant="subtitle1"
                     >
                       {song.title}
                     </Typography>
                   </div>
-                  <div>
+                  <div className="artistDiv">
                     <Typography variant="subtitle2">
                       {" "}
                       by {song.artist}
