@@ -109,6 +109,10 @@ border-radius: 50%;
   height: 25px;
 }
 
+.spacerDiv2 {
+  width: 60%;
+}
+
 .headerDiv {
   font-size: 1.3rem;
   margin-left: 5px;

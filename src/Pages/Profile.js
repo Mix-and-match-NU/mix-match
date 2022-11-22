@@ -66,9 +66,9 @@ export default function Profile() {
           </div>
           <Avatar
             alt="user"
-            // sx={{ bgcolor: deepPurple[500], width: 100, height: 100 }}
-            src={user.avatar.length == null ? "" : user.avatar[0].large}
-            sx={{ width: 100, height: 100 }}
+            sx={{ bgcolor: deepPurple[500], width: 100, height: 100 }}
+            // src={user.avatar.length == null ? "" : user.avatar[0].large}
+            // sx={{ width: 100, height: 100 }}
           />
           <div className="headerDiv">
             <h2>Welcome, {user.first_name}!</h2>
