@@ -15,8 +15,9 @@ Eric Mcghee
 
 ## Dependencies
 
+Mix N Match is a React app with a MongoDB backend.
 
-
+This app was styled using [Material UI](https://mui.com/)
 
 ## Deployed Application
 
