@@ -44,7 +44,7 @@ const SingleUser = ({ users }) => {
         <div className="outerUserCard">
           {users &&
             users.map((user) => (
-              <Card key={user._id}>
+              <Card key={user._id} className="userCardBorder">
                 <CardContent>
                   <div className="userInfoSection">
                     <Stack direction="row" className="avatarSection">
@@ -77,10 +77,7 @@ const SingleUser = ({ users }) => {
                   </div>
                   {/* Needs playlist */}
                   <Playlist userId={user._id} />
-                  Like and Dislike Button
-                  <Button onClick={() => handleLike(user._id)} color="primary">
-                    Like
-                  </Button>
+    
                 </CardContent>
               </Card>
             ))}
