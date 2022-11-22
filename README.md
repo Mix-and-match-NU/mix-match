@@ -32,3 +32,8 @@ This app was styled using [Material UI](https://mui.com/)
 
 https://mix-match-fe.herokuapp.com/
 
+
+## How to Use
+
+Sign Up, make a playlist, and begin liking other users based on their playlist to find that perfect person
+
