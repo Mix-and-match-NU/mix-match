@@ -26,7 +26,7 @@ function Playlist( prop ) {
   if (loading) return (<h5>Loading...</h5>)
   
   // console.log(data); 
-
+  console.log(userId)
   const destructuredData = data?.me || data?.user || Array(9);
   const songs = destructuredData.playlist;
   // console.log(songs);
