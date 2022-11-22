@@ -5,6 +5,8 @@ import { questionData } from "../data/questionData";
 import { useMutation } from '@apollo/client'
 import { ADD_SONG } from '../utils/mutations'
 
+import Button from "@mui/material/Button";
+
 const defaultObj = Array(9).fill({
   title: 'No Song Selected',
   artist: 'N/A',
@@ -47,12 +49,14 @@ function QuestionList() {
 
   return (
     <>
+    <div className="questionlistpage">
       <form className='question-form'>
       <div>{list}</div>
-      <button onClick={handleFormSubmit}>
+      <Button onClick={handleFormSubmit} color="primary">
         submit
-      </button>
+      </Button>
       </form>
+      </div>
     </>
   );
 }

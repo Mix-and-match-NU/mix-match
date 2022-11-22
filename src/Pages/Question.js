@@ -45,7 +45,7 @@ function Question({ question, list, setResponse, userResponses, index }) {
         <h5>{question.text}</h5>
       </div>
       {/* Song Data */}
-      <div>
+      <div className="autocomplete1">
         <Autocomplete
           disablePortal
           id="combo-box-demo"
@@ -54,7 +54,7 @@ function Question({ question, list, setResponse, userResponses, index }) {
           
           renderInput={(params) => <TextField {...params} 
           label="Song" 
-          
+          component="div"
           />}
           onChange={(event, newValue) => {
             const restructuredData = {
