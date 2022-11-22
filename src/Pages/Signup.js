@@ -10,6 +10,10 @@ import Auth from "../utils/auth";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Alert from "@mui/material/Alert";
+import IconButton from "@mui/material/IconButton";
+import Collapse from "@mui/material/Collapse";
+import CloseIcon from "@mui/icons-material/Close";
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -56,6 +60,7 @@ const Signup = () => {
 
   // Pointer leave
   const [pointer, pointerSetError] = useState("");
+  const [open, setOpen] = React.useState(true);
 
   function pointerLeave(event) {
     if (!event.target.value) {
@@ -174,24 +179,51 @@ const Signup = () => {
                         variant="standard"
                       />
                     </div>
-                    <div className="alertDiv">
-                      <alert>
-                        {pointer && (
-                          <alert style={{ color: "red" }}>{pointer}</alert>
-                        )}
-                      </alert>
-                    </div>
-                    <div>
+
+                    <>
+                      <Box sx={{ width: "100%" }}>
+                        <Collapse in={open}>
+                          {pointer && (
+                            <Alert
+                              severity="error"
+                              action={
+                                <IconButton
+                                  aria-label="close"
+                                  color="inherit"
+                                  size="small"
+                                  onClick={() => {
+                                    setOpen(false);
+                                  }}
+                                >
+                                  <CloseIcon fontSize="inherit" />
+                                </IconButton>
+                              }
+                              sx={{ mb: 2 }}
+                            >
+                              {pointer}
+                            </Alert>
+                          )}
+                        </Collapse>
+                      </Box>
+                    </>
+
+                    <div >
+                      <div className="loginButton">
                       <Button
-                        className="btn btn-block btn-primary"
-                        style={{ cursor: "pointer" }}
+                        className="btn btn-block btn-primary "
+                        style={{ cursor: "pointer", color: "#fff6f7" }}
                         type="submit"
                         variant="contained"
                       >
                         Submit
                       </Button>
+                      </div>
                       <br></br>
-                      <h7>Have an account? <Link to="/Login">Signin</Link></h7>
+                      <div>
+                      <h7>
+                        Have an account? <Link to="/Login">Log In</Link>
+                      </h7>
+                      </div>
                     </div>
                   </div>
                 </Box>
