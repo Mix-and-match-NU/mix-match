@@ -111,3 +111,21 @@ border-radius: 50%;
 .headerDiv {
   font-size: 1.3rem;
 }
+
+
+/* ****************** HOME/ALL USERS ****************** */
+
+.userCard {
+display: flex;
+align-content: center;
+justify-content: center;
+align-items: center;
+flex-direction: row;
+}
+
+.outerUserCard{
+  border: #3B1760 solid 1px;
+  border: 1px solid #3B1760;
+  box-shadow: #3B1760 0px 2px 8px 0px;
+  border-radius: 5px;
+}
