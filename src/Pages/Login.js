@@ -9,10 +9,16 @@ import { Link, Navigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Alert from "@mui/material/Alert";
+import IconButton from "@mui/material/IconButton";
+import Collapse from "@mui/material/Collapse";
+import CloseIcon from "@mui/icons-material/Close";
+import { Typography } from "@mui/material";
 
 export default function Login(props) {
   const [formState, setFormState] = useState({ username: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [open, setOpen] = React.useState(true);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -39,15 +45,15 @@ export default function Login(props) {
     } catch (e) {
       console.error(e);
     }
-    if (Auth.loggedIn()) {
-      <>
-        <Navigate to="/Profile"></Navigate>
-      </>;
-    } else {
-      <>
-        <Navigate to="/Login"></Navigate>
-      </>;
-    }
+    // if (Auth.loggedIn()) {
+    //   <>
+    //     <Navigate to="/Profile"></Navigate>
+    //   </>;
+    // } else {
+    //   <>
+    //     <Navigate to="/Login"></Navigate>
+    //   </>;
+    // }
 
     // clear form values
     setFormState({
@@ -69,7 +75,17 @@ export default function Login(props) {
 
   return (
     <>
-      <h3 className="loginDescrip"> {Auth.loggedIn() ? <p>Logged in, start Matching!</p> : <p>Please login using your credentials <br></br>Or <Link to="/Signup">sign up!</Link></p>}</h3>
+      <h5 variant="h3" className="loginDescrip">
+        {" "}
+        {Auth.loggedIn() ? (
+          <p>Logged in, start Matching!</p>
+        ) : (
+          <p>
+            Please login using your credentials <br></br>Or{" "}
+            <Link to="/Signup">sign up!</Link>
+          </p>
+        )}
+      </h5>
       <div className="formBox">
         <Box
           component="form"
@@ -108,21 +124,48 @@ export default function Login(props) {
                 helperText="*Required field"
               />
             </div>
-            <div className="alertDiv">
-              <alert>
-                {pointer && <alert style={{ color: "red" }}>{pointer}</alert>}
-              </alert>
-            </div>
-            <div>
-              <Button
-                className="submit"
-                style={{ cursor: "pointer" }}
-                type="submit"
-                variant="contained"
-              >
-                Submit
-              </Button>
-            </div>
+
+            <>
+              <Box sx={{ width: "100%" }} >
+                <Collapse in={open} >
+                  {pointer && (
+                    <Alert
+                    
+                      severity="error"
+                      action={
+                        <IconButton
+                          aria-label="close"
+                          color="inherit"
+                          size="small"
+                          onClick={() => {
+                            setOpen(false);
+                          }}
+                        >
+                          <CloseIcon fontSize="inherit" />
+                        </IconButton>
+                      }
+                      sx={{ mb: 2 }}
+                    >
+                      {pointer}
+                    </Alert>
+                  )}
+                </Collapse>
+                <div className="loginButton">
+                <Button
+                  disabled={open}
+                  variant="contained"
+                  onClick={() => {
+                    setOpen(true);
+                  }}
+                  className="submit"
+                  style={{ cursor: "pointer", color: "#fff6f7" }}
+                  type="submit"
+                >
+                  Submit
+                </Button>
+                </div>
+              </Box>
+            </>
           </div>
         </Box>
       </div>
