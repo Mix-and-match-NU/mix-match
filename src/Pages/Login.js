@@ -45,15 +45,6 @@ export default function Login(props) {
     } catch (e) {
       console.error(e);
     }
-    // if (Auth.loggedIn()) {
-    //   <>
-    //     <Navigate to="/Profile"></Navigate>
-    //   </>;
-    // } else {
-    //   <>
-    //     <Navigate to="/Login"></Navigate>
-    //   </>;
-    // }
 
     // clear form values
     setFormState({
@@ -75,17 +66,11 @@ export default function Login(props) {
 
   return (
     <>
-      <h5 variant="h3" className="loginDescrip">
-        {" "}
-        {Auth.loggedIn() ? (
-          <p>Logged in, start Matching!</p>
-        ) : (
-          <p>
-            Please login using your credentials <br></br>Or{" "}
-            <Link to="/Signup">sign up!</Link>
-          </p>
-        )}
-      </h5>
+      <h3 className="loginDescrip">
+        Please login using your credentials <br />
+        Or <br />
+        <Link to="/Signup">sign up!</Link>
+      </h3>
       <div className="formBox">
         <Box
           component="form"
@@ -98,39 +83,42 @@ export default function Login(props) {
         >
           <div className="innerFormBox">
             <h2>Login</h2>
-            <div>
-              <TextField
-                className="inputUsername"
-                placeholder="username"
-                name="username"
-                type="text"
-                value={formState.username}
-                onChange={handleChange}
-                onPointerLeave={pointerLeave}
-                label="Username*"
-                variant="standard"
-                helperText="*Required field"
-              />
-              <TextField
-                className="inputPassword"
-                placeholder="******"
-                name="password"
-                value={formState.password}
-                onChange={handleChange}
-                onPointerLeave={pointerLeave}
-                label="Password*"
-                type="password"
-                variant="standard"
-                helperText="*Required field"
-              />
-            </div>
+            {data ? (
+              <p>REDIRECTING...</p>
+            ) : (
+              <div>
+                <TextField
+                  className="inputUsername"
+                  placeholder="username"
+                  name="username"
+                  type="text"
+                  value={formState.username}
+                  onChange={handleChange}
+                  onPointerLeave={pointerLeave}
+                  label="Username*"
+                  variant="standard"
+                  helperText="*Required field"
+                />
+                <TextField
+                  className="inputPassword"
+                  placeholder="******"
+                  name="password"
+                  value={formState.password}
+                  onChange={handleChange}
+                  onPointerLeave={pointerLeave}
+                  label="Password*"
+                  type="password"
+                  variant="standard"
+                  helperText="*Required field"
+                />
+              </div>
+            )}
 
             <>
-              <Box sx={{ width: "100%" }} >
-                <Collapse in={open} >
+              <Box sx={{ width: "100%" }}>
+                <Collapse in={open}>
                   {pointer && (
                     <Alert
-                    
                       severity="error"
                       action={
                         <IconButton
@@ -150,19 +138,42 @@ export default function Login(props) {
                     </Alert>
                   )}
                 </Collapse>
+
+                <Collapse in={open}>
+                  {error && (
+                    <Alert
+                      severity="error"
+                      action={
+                        <IconButton
+                          aria-label="close"
+                          color="inherit"
+                          size="small"
+                          onClick={() => {
+                            setOpen(false);
+                          }}
+                        >
+                          <CloseIcon fontSize="inherit" />
+                        </IconButton>
+                      }
+                      sx={{ mb: 2 }}
+                    >
+                      {error.message}
+                    </Alert>
+                  )}
+                </Collapse>
+
                 <div className="loginButton">
-                <Button
-                  disabled={open}
-                  variant="contained"
-                  onClick={() => {
-                    setOpen(true);
-                  }}
-                  className="submit"
-                  style={{ cursor: "pointer", color: "#fff6f7" }}
-                  type="submit"
-                >
-                  Submit
-                </Button>
+                  <Button
+                    variant="contained"
+                    onClick={() => {
+                      setOpen(true);
+                    }}
+                    className="submit"
+                    style={{ cursor: "pointer", color: "#fff6f7" }}
+                    type="submit"
+                  >
+                    Submit
+                  </Button>
                 </div>
               </Box>
             </>
