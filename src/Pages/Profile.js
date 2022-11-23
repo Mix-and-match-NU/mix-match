@@ -58,12 +58,16 @@ export default function Profile() {
     <>
       {/* Avatar */}
 
-      <div className="AvatarDiv">
+      <div>
+          <div className="spacerDiv">
+          </div>
         <Stack direction="row" spacing={2}>
+          <div className="spacerDiv">
+          </div>
           <Avatar
             alt="user"
             sx={{ bgcolor: deepPurple[500], width: 100, height: 100 }}
-            // src={avatar.length == null ? "" : user.avatar[0].large}
+            // src={user.avatar.length == null ? "" : user.avatar[0].large}
             // sx={{ width: 100, height: 100 }}
           />
           <div className="headerDiv">

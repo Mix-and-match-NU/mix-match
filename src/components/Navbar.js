@@ -18,6 +18,8 @@ import { IconButton } from "@mui/material";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import { Stack } from "@mui/system";
 
+//Custom logo import
+// import MyLogo from '../assets/Logo.svg';
 
 
 const Navbar = () => {
@@ -48,6 +50,11 @@ const Navbar = () => {
     p: 4,
   };
 
+  //logo
+  // const myLogo = () => {
+  //   return <img src={MyLogo} />
+  // }
+
   // Modal functionality
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -77,7 +84,6 @@ const Navbar = () => {
                 >
                   Mix n Match
                 </Typography>
-
                 <div className="navEls">
                   {Auth.loggedIn() ? (
                     <>
@@ -133,7 +139,6 @@ const Navbar = () => {
                             Logout
                           </Button>
                         </Link>
-
                           <IconButton >
                             <QuestionMarkIcon
                               onClick={handleOpen}

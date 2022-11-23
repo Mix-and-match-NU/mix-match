@@ -109,10 +109,14 @@ border-radius: 50%;
   height: 25px;
 }
 
-.headerDiv {
-  font-size: 1.3rem;
+.spacerDiv2 {
+  width: 60%;
 }
 
+.headerDiv {
+  font-size: 1.3rem;
+  margin-left: 5px;
+}
 
 /* ****************** HOME/ALL USERS ****************** */
 
@@ -169,4 +173,9 @@ padding: 10px;
 /* .userInfoSection{
   border: red 1px solid;
 } */
-
+/*Navbar styling*/
+.navEls button:hover {
+  transition: .05;
+  text-shadow: 0 0 3px #e0c5d3;
+  
+}
